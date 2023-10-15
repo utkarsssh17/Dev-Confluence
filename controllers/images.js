@@ -1,0 +1,58 @@
+import { upload as multerUpload } from "../config/multer.js";
+import * as s3 from "../config/s3.js";
+import * as helperFn from "./helpers.js";
+import User from "../models/user.js";
+import path from "path";
+
+// Upload image to S3
+const uploadImageToS3 = async (file) => {
+
+    // Randomize file name
+    const fileExtension = path.extname(file.originalname);
+    const fileName = helperFn.randomizeFileName(fileExtension);
+    file.fileName = fileName;
+
+    // Upload image
+    const response = await s3.upload(file);
+    response.fileName = fileName;
+
+    return response;
+};
+
+// Upload profile picture
+const uploadProfilePicture = async (req, res, next) => {
+    multerUpload(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json({ message: err.message });
+        }
+        try {
+            if (!req.files['image'][0]) {
+                return res.status(400).json({ message: "Please upload a picture." });
+            }
+            const result = await uploadImageToS3(req.files['image'][0]);
+
+            const user = await User.findById(req.user._id);
+            user.profilePicture = result.fileName;
+            await user.save();
+
+            return res.status(200).json({ imageUrl: result.fileName });
+        } catch (error) {
+            return res.status(400).json({ message: error.message });
+        }
+    });
+};
+
+// Get signed URL of an object
+const getSignedUrl = async (fileName) => {
+    if (!fileName) {
+        return null;
+    }
+    try {
+        const signedUrl = await s3.getPresignedUrl(fileName);
+        return signedUrl;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+};
+
+export { uploadImageToS3, uploadProfilePicture, getSignedUrl };
