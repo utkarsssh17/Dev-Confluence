@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
   <a class="navbar-brand" href="/">
     <img src="/public/images/DevConfluence.svg" alt="Dev Confluence Logo" height="50" />
   </a>
@@ -9,22 +9,22 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link custom-text-white" href="/">Home</a>
       </li>
       {{#unless user}}
       <li class="nav-item">
-        <a class="nav-link" href="/auth/login">Log In</a>
+        <a class="nav-link custom-text-white" href="/auth/login">Log In</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/auth/register">Sign Up</a>
+        <a class="nav-link custom-text-white" href="/auth/register">Sign Up</a>
       </li>
       {{/unless}}
       {{#if user}}
       <li class="nav-item">
-        <a class="nav-link" href="/user/profile">Profile</a>
+        <a class="nav-link custom-text-white" href="/user/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/auth/logout">Logout</a>
+        <a class="nav-link custom-text-white" href="/auth/logout">Logout</a>
       </li>
       {{/if}}
     </ul>

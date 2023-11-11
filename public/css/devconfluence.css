@@ -62,3 +62,7 @@ button[type="submit"] {
 .edit-form-buttons {
   display: none;
 }
+
+.custom-text-white {
+  color: white !important;
+}
