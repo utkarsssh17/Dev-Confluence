@@ -1,62 +1,51 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card mt-5">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-4 mb-4 mb-lg-0">
-              <div class="text-center">
-                <div class="profile-picture">
-                  {{#if user.profilePicture}}
-                  <img src="{{user.profilePicture}}" alt="Profile picture" style="max-width: 150px;"
-                    class="profile-picture-img shadow-sm" />
-                  {{else}}
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg" alt="Profile picture"
-                    style="max-width: 150px;" class="profile-picture-img shadow-sm" />
-                  {{/if}}
-                </div>
-              </div>
+<div class="custom-card-container" data-custom-state="#about">
+  <div class="custom-card-header-container">
+    <div class="custom-card-cover-container"
+      style="background-image: url('{{user.profilePicture}}')"></div>
+    <img class="custom-card-avatar-container" src="{{user.profilePicture}}" alt="avatar" />
+    <h1 class="custom-card-fullname-container">{{user.firstName}} {{user.lastName}}</h1>
+  </div>
+  <div class="custom-card-main-container">
+    <div class="custom-card-section-container is-active" id="about">
+      <div class="custom-card-content-container">
+        <p class="custom-card-desc-container">
+          {{#if user.email}}
+          <div class="mb-3">
+            <span class="text-muted">Email:</span>
+            {{user.email}}
+          </div>
+          {{/if}}
+          <div class="mb-3">
+            <div class="mb-3">
+              <span class="text-muted">Username:</span>
+              {{user.username}}
             </div>
-            <div class="col-lg-8">
-              <div class="profile-info">
-                <h1 class="mb-4">{{user.firstName}} {{user.lastName}}</h1>
-                {{#if user.email}}
-                <div class="mb-3">
-                  <span class="text-muted">Email:</span>
-                  {{user.email}}
-                </div>
-                {{/if}}
-                <div class="mb-3">
-                  <div class="mb-3">
-                    <span class="text-muted">Username:</span>
-                    {{user.username}}
-                  </div>
-                  {{#if user.dob}}
-                  <div class="mb-3">
-                    <span id="date" class="text-muted">Date of birth:</span>
-                    {{user.dob}}
-                  </div>
-                  {{/if}}
-                  <div class="mb-3">
-                    <span class="text-muted">Bio:</span>
-                    {{user.bio}}
-                  </div>
-                  <div class="mb-3">
-                    <span class="text-muted">Location:</span>
-                    {{user.location}}
-                  </div>
-                  <div class="mb-3">
-                    <span class="text-muted">Joined:</span>
-                    {{user.createdAt}}
-                  </div>
-                  {{#if (eq currentUser.username user.username)}}
-                  <a href="/auth/logout" class="btn btn-primary">Logout</a>
-                  {{/if}}
-                </div>
-              </div>
+            {{#if user.dob}}
+            <div class="mb-3">
+              <span id="date" class="text-muted">Date of birth:</span>
+              {{user.dob}}
             </div>
+            {{/if}}
+            <div class="mb-3">
+              <span class="text-muted">Bio:</span>
+              {{user.bio}}
+            </div>
+            <div class="mb-3">
+              <span class="text-muted">Location:</span>
+              {{user.location}}
+            </div>
+            <div class="mb-3">
+              <span class="text-muted">Joined:</span>
+              {{user.createdAt}}
+            </div>
+            {{#if (eq currentUser.username user.username)}}
+            <a href="/auth/logout">
+              <button class="logout-button">Logout</button>
+            </a>
+            {{/if}}
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -5,11 +5,13 @@ html {
 
 body {
   min-height: 100%;
+  font-size: 17px !important;
+  font-family: math !important;
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Nova Flat' !important; 
 }
 
 main {
@@ -59,4 +61,8 @@ button[type="submit"] {
 
 .edit-form-buttons {
   display: none;
+}
+
+.custom-text-white {
+  color: white !important;
 }
