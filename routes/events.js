@@ -10,5 +10,9 @@ router.get('/create',ensureAuthenticated,eventController.renderCreateEvent);// T
 // Router Post event 
 router.post('/create', ensureAuthenticated, eventController.createEvent);
 
+// Edit event
+router.get('/:id/edit', ensureAuthenticated,eventController.renderEditEvent);
+
+router.put('/:id/edit', ensureAuthenticated, eventController.editEvent);
 
 export default router;

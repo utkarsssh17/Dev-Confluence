@@ -1,0 +1,88 @@
+<script src="../../public/js/edit-event.js"></script>
+<div class="row">
+ <form id="edit-event-form" enctype="multipart/form-data" style="display: flex;">
+    <div class="col-xs-12 col-sm-4 ">
+        <div class="card spacer2" id="eventDetailsName1">
+            {{!-- Event name and description --}}
+                  <div class="form-group">
+                            <label for="eventTitle"><h6>Event Name</h6></label>
+                            <h2><input type="text" class="form-control" id="eventTitle" name="eventTitle"
+                                placeholder="Enter event name" required value="{{event.title}}" />
+                            </h2>
+                                <small id="emailHelp" class="form-text text-muted">Having a great name can give you the traction you need</small>
+
+                            <br>
+                            <br>
+                            <label for="eventDescription"><h6>Description</h6></label>
+                            <textarea class="form-control" id="eventDescription" name="eventDescription"
+                                placeholder="Enter event description" rows="5" required>{{event.description}}</textarea>
+                                <div class="form-group">
+                            <label for="eventMaxCapacity">Max Capacity:</label>
+                            <input type="number" class="form-control" id="eventMaxCapacity" name="eventMaxCapacity"
+                                placeholder="Enter max capacity" min="1" required value="{{event.maxCapacity}}"  />
+                        </div>
+                       
+                        </div>
+
+        </div>
+
+
+    </div>
+    {{!-- Below dates  --}}
+    <div class="col-xs-12 col-sm-4 ">
+
+        <div class="card spacer2"  id="eventDetailsName2">
+                        <div class="form-group ">
+                            <label for="eventLocation"><h6>Location</h6></label>
+                            <input type="text" class="form-control" id="eventLocation" name="eventLocation"
+                                placeholder="Enter event location" required value="{{event.location}}"  />
+                       
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="eventDate"><h6>Event Date</h6></label>
+                                <input type="date" class="form-control" id="eventDate" name="eventDate" required  value="{{event.eventDate}}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="eventTime"><h6>Event Time</h6></label>
+                                <input type="time" class="form-control" id="eventTime" name="eventTime" required  value="{{event.eventTime}}" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="eventDuration"><h6>Duration (in minutes):</h6></label>
+                                <input type="number" class="form-control" id="eventDuration" name="eventDuration"
+                                    placeholder="Enter duration in minutes" min="1" required   value="{{event.duration}}" />
+                            </div>
+                        </div>
+                    </div>
+                   
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-4 ">
+
+        <div class="card spacer2" id="eventDetailsName3">
+            {{!-- Event name and description --}}
+                 <div class="form-group">
+                            <label for="eventCategory"><h1>Categories</h1></label>
+                            <select class="form-control" id="eventCategory" name="eventCategory[]" multiple>
+                                {{#each categories}}
+                                <option value="{{this}}" {{#if selected}}selected{{/if}}>{{this}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+             
+
+        </div>
+    </div>
+</div>
+<div class="row container">
+    <div class="col-8"></div>
+    <div class="col"> 
+        <div class="text-center bottomRowButton">
+                        <button type="button" class="btn btn-primary event-edit-submit-btn saveButton" form="edit-event-form">Save</button>
+                        <a href="/" class="btn btn-secondary cancel">Cancel</a>
+                    </div>
+    </div>
+</div>
+</form>
