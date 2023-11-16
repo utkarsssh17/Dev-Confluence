@@ -121,6 +121,13 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error(error);
         }
     });
+    //  Code form validation in the create event
+    const eventTitle= document.getElementById('eventTitle');
+    const eventDescription= document.getElementById('eventDescription');
+    const eventMaxCapacity= document.getElementsById('eventMaxCapacity');
+
+    eventTitle.addEventListener('change',button1_visibilty)
+
 });
 function forwarding(curr,next){
     currForm=document.getElementById("eventDetailsName"+curr);
@@ -135,4 +142,9 @@ function backing(curr,prev){
     prevForm=document.getElementById("eventDetailsName"+prev)
     currForm.style.display="none";
     prevForm.style.display="block";
+}
+
+function button1_visibilty(){
+    console.log("change");
+   
 }
