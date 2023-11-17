@@ -1,0 +1,153 @@
+<script src="../public/js/create-event.js"></script>
+<div class="container">
+     <form id="create-event-form" enctype="multipart/form-data">
+    <div class="row spacer">
+        <div class="col-xs-12 col-sm-12  card spacer" id="eventDetailsName1">
+            {{!-- Event name and description --}}
+                  <div class="form-group">
+                            <label for="eventTitle"><h6>Event Name</h6></label>
+                            <h2><input type="text" class="form-control" id="eventTitle" name="eventTitle"
+                                placeholder="Enter event name" required />
+                            </h2>
+                                <small id="emailHelp" class="form-text text-muted">Having a great name can give you the traction you need</small>
+
+                            <br>
+                            <br>
+                            <label for="eventDescription"><h6>Description</h6></label>
+                            <textarea class="form-control" id="eventDescription" name="eventDescription"
+                                placeholder="Enter event description" rows="5" required></textarea>
+                                <div class="form-group">
+                            <label for="eventMaxCapacity">Max Capacity:</label>
+                            <input type="number" class="form-control" id="eventMaxCapacity" name="eventMaxCapacity"
+                                placeholder="Enter max capacity" min="1" required />
+                        </div>
+                        <div class="row" >
+                            <div class="col-6 ">
+                                
+                            </div>
+                           <div class="col" style="display: flex; flex-direction: row;justify-content: flex-end;">
+                            <div class="forward" onclick="forwarding(1,2)" id="Button1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 card" style="display: none;"  id="eventDetailsName2">
+                        <div class="form-group ">
+                            <label for="eventLocation"><h6>Location</h6></label>
+                            <input type="text" class="form-control" id="eventLocation" name="eventLocation"
+                                placeholder="Enter event location" required />
+                       
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="eventDate"><h6>Event Date</h6></label>
+                                <input type="date" class="form-control" id="eventDate" name="eventDate" required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="eventTime"><h6>Event Time</h6></label>
+                                <input type="time" class="form-control" id="eventTime" name="eventTime" required />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="eventDuration"><h6>Duration (in minutes):</h6></label>
+                                <input type="number" class="form-control" id="eventDuration" name="eventDuration"
+                                    placeholder="Enter duration in minutes" min="1" required />
+                            </div>
+                        </div>
+        </div>
+                        <div class="row" >
+                            <div class="col centerify" onclick="backing(2,1)">
+                                <div class="back">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+</svg>
+                                </div>
+                            </div>
+                           <div class="col centerify" >
+                            <div class="forward" onclick="forwarding(2,3)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg>
+                                </div>
+                            </div>
+                        </div>
+        </div>
+        {{!-- next --}}
+
+        <div class="col-xs-12 col-sm-12  card" id="eventDetailsName3" style="display: none;">
+            {{!-- Event name and description --}}
+                 <div class="form-group">
+                            <label for="eventCategory"><h1>Categories</h1></label>
+                            <select class="form-control" id="eventCategory" name="eventCategory[]" multiple>
+                                {{#each categories}}
+                                <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                <div class="row" >
+                            <div class="col centerify" onclick="backing(3,2)">
+                                <div class="back">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+</svg>
+                                </div>
+                            </div>
+                           <div class="col centerify" >
+                            <div class="forward" onclick="forwarding(3,4)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+</svg>      
+                                </div>
+                                
+                            </div>
+                        </div>
+
+        </div>
+
+
+{{!-- photo upload  --}}
+
+         <div class="col-xs-12 col-sm-12  card " id="eventDetailsName4" style="display: none;">
+            
+                <div class="row">
+                    <div class="col">
+<div class="form-group">
+    <label for="eventPhotos"><h1>Event Photos:</label></h1>
+    <input type="file" class="form-control-file" id="eventPhotos" name="eventPhotos" multiple
+        accept="image/*">
+</div>
+
+                        
+                    </div>
+                    
+                </div>
+<div class="form-group">
+    <div id="photoPreview" class="d-flex flex-wrap"></div>
+    <small id="photoCount" class="form-text text-muted"></small>
+</div>
+                <div class="row" >
+                            <div class="col centerify" onclick="backing(4,3)">
+                                <div class="back">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+</svg>
+                                </div>
+                            </div>
+                           <div class="col centerify" >
+                            <div class="forward" onclick="forwarding(3,4)">
+                                 <button type="submit" class="btn btn-primary btn-block">Create Event</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+        </div>
+    </div>
+   
+    </form>
+</div>
