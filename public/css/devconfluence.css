@@ -66,3 +66,58 @@ button[type="submit"] {
 .custom-text-white {
   color: white !important;
 }
+
+
+/* CSS for creating the event */
+
+.spacer{
+  margin:10px;
+  display: flex;
+  align-items: center;
+  max-width: 90%;
+  
+}
+
+/* for the input field Create event in create event */
+#eventTitle{
+  border-top: none;
+  border-left:none;
+  border-right:none;
+  font-size: 30px;
+}
+
+
+/* for the buttons back and forward */
+.back{
+  margin-top:10px;
+  display: flex;
+  border: None;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #E36D6D;
+  height: 50px;
+  width: 50px;
+  color: white;
+  align-content: space-around;
+  flex-wrap: wrap;
+}
+
+.forward{
+  margin-top:10px;
+  display: flex;
+  border: None;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #639681;
+  height: 50px;
+  width: 50px;
+  color: white;
+  align-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* centerify to center the flex elements */
+.centerify{
+  display: flex;
+  justify-content: center;
+}
