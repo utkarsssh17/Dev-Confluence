@@ -158,4 +158,4 @@ const rsvpEvent = async (req, res, next) => {
     }
 };
 
-export {renderCreateEvent,createEvent,getEventById,getAllEvents, rsvpEvent};
+export {renderCreateEvent,createEvent,getEventById,getAllEvents, rsvpEvent, deleteEvent};
