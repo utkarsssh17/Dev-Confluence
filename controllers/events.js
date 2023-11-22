@@ -31,4 +31,131 @@ const createEvent = async (req, res, next) => {
     }
 };
 
-export {renderCreateEvent,createEvent};
+// Get event by id
+const getEventById = async (req, res, next) => {
+    try {
+        const event = await Event.findById(req.params.id).lean();
+        if (!event) {
+            return res.status(404).render("error", { title: "404 Event Not Found!", statusCode: 404, errorMessage: "The event you are looking for does not exist.", user: req.user });
+        }
+        const signedEventImageUrls = [];
+        for (let i = 0; i < event.photos.length; i++) {
+            const signedEventImageUrl = await imageController.getSignedUrl(event.photos[i]);
+            signedEventImageUrls.push(signedEventImageUrl);
+        }
+        event.photos = signedEventImageUrls;
+        const signedDisplayPictureUrl = await imageController.getSignedUrl(event.displayPicture);
+        event.displayPicture = signedDisplayPictureUrl;
+        event.eventDate = helperFn.formatDate(event.eventDate);
+        event.createdAt = helperFn.formatDate(event.createdAt);
+        event.updatedAt = helperFn.formatDate(event.updatedAt);
+
+        // Calculate remaining seats
+        const remainingSeats = event.maxCapacity - event.attendees.length;
+        event.remainingSeats = remainingSeats;
+
+        // Get organizer details
+        const organizer = await User.findById(event.organizerId).lean();
+
+        // Get attendees details
+        let isAttendee = false;
+        if (event.attendees && event.attendees.length > 0) {
+            for (let i = 0; i < event.attendees.length; i++) {
+                const attendee = await User.findById(event.attendees[i]).lean();
+                attendee.profilePicture = await imageController.getSignedUrl(attendee.profilePicture);
+                event.attendees[i] = attendee;
+                if (req.user) {
+                    if (attendee._id.toString() === req.user.id.toString()) {
+                        isAttendee = true;
+                    }
+                }
+            }
+        }
+
+
+        event.isPastEvent = false;
+        if (new Date(event.eventDate) < new Date()) {
+            event.isPastEvent = true;
+        }
+
+        return res.render('event', { title: event.title, event, organizer, user: req.user ? req.user.toJSON() : null, isAttendee });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Get all events
+const getAllEvents = async () => {
+    try {
+        const events = await Event.find().lean();
+        for (let i = 0; i < events.length; i++) {
+            const signedEventImageUrl = await imageController.getSignedUrl(events[i].displayPicture);
+            events[i].displayPicture = signedEventImageUrl;
+        }
+        return events;
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Delete event
+const deleteEvent = async (req, res, next) => {
+    try {
+        const event = await Event.findById(req.params.id);
+        if (!event) {
+            return res.status(404).send({ errorMessage: "The event you are trying to delete does not exist." });
+        }
+        if (event.organizerId.toString() !== req.user.id) {
+            return res.status(403).send({ errorMessage: "You are not authorized to delete this event." });
+        }
+        // delete from database
+        await Event.findByIdAndDelete(req.params.id);
+        return res.status(200).send({ successMessage: "Event deleted successfully." });
+    } catch (error) {
+        return res.status(400).send({ errors: error.message });
+    }
+};
+
+
+// RSVP and cancel RSVP
+const rsvpEvent = async (req, res, next) => {
+    try {
+        const event = await Event.findById(req.params.id);
+        if (!event) {
+            return res.status(404).render("error", { title: "404 Event Not Found!", statusCode: 404, errorMessage: "The event you are looking for does not exist.", user: req.user });
+        }
+        if (event.organizerId.toString() === req.user.id.toString()) {
+            return res.status(400).send({ errorMessage: "You cannot RSVP to your own event." });
+        }
+        if (event.eventDate < new Date()) {
+            return res.status(400).send({ errorMessage: "This event has already passed." });
+        }
+        if (!req.user) {
+            return res.status(400).send({ errorMessage: "You must be logged in to RSVP to an event." });
+        }
+        const user = await User.findById(req.user.id);
+        if (!user) {
+            return res.status(404).send({ errorMessage: "The user does not exist." });
+        }
+        if (event.attendees.includes(user.id)) {
+            event.attendees.pull(user.id);
+            user.eventIds.pull(event.id);
+            await event.save();
+            await user.save();
+            return res.status(200).send({ successMessage: "You have successfully cancelled your RSVP." });
+        } else {
+            if (event.attendees.length === event.maxCapacity) {
+                return res.status(400).send({ errorMessage: "This event is already full." });
+            }
+            event.attendees.push(user.id);
+            user.eventIds.push(event.id);
+            await event.save();
+            await user.save();
+            return res.status(200).send({ successMessage: "You have successfully RSVP'd to this event." });
+        }
+    } catch (error) {
+        return res.status(400).send({ errorMessage: error.message });
+    }
+};
+
+export {renderCreateEvent,createEvent,getEventById,getAllEvents, rsvpEvent, deleteEvent};
