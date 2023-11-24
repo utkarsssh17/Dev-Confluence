@@ -121,3 +121,8 @@ button[type="submit"] {
   display: flex;
   justify-content: center;
 }
+
+.m-hr {
+  margin-left: 20px;
+  margin-right: 20px;
+}
