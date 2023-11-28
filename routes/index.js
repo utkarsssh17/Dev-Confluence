@@ -1,12 +1,14 @@
 import authRoutes from "./auth.js";
 import userRoutes from "./users.js";
 import imageRoutes from "./images.js";
-import eventRoutes from "./events.js"
+import eventRoutes from "./events.js";
+import * as eventController from '../controllers/events.js';
 
 const constructorMethod = (app) => {
     app.get("/", async (req, res, next) => {
         try {
-            res.render("home", { title: "Dev Confluence", user: req.user });
+            const events = await eventController.getAllEvents();
+            res.render("home", { title: "Dev Confluence",events, user: req.user });
         } catch (error) {
             next(error);
         }
