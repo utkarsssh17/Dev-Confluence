@@ -1,4 +1,7 @@
 import Event from "../models/event.js";
+import * as imageController from "./images.js";
+import * as helperFn from "./helpers.js";
+import User from "../models/user.js";
 
 
 const eventCategories = ["Python","Unix","Cloud","Security","Devops","Front-End","Back-End"];
