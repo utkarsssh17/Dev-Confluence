@@ -6,12 +6,11 @@ html {
 body {
   min-height: 100%;
   font-size: 17px !important;
-  font-family: math !important;
+  font-family: monospace !important;
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  font-family: 'Nova Flat' !important; 
 }
 
 main {
@@ -125,4 +124,25 @@ button[type="submit"] {
 .m-hr {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.login-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.tech-theme-image {
+  height: 400px;
+  width: 400px;
+  margin-left: 5%;
+}
+
+.custom-nav {
+  
+}
+
+.custom-nav-item {
+  min-width: 80px;
 }
