@@ -128,7 +128,6 @@ button[type="submit"] {
 
 .login-form-container {
   display: flex;
-  align-items: center;
   justify-content: center;
   justify-items: center;
 }
@@ -137,6 +136,7 @@ button[type="submit"] {
   height: 400px;
   width: 400px;
   margin-left: 5%;
+  margin-top: 60px;
 }
 
 .custom-nav {
@@ -145,4 +145,5 @@ button[type="submit"] {
 
 .custom-nav-item {
   min-width: 80px;
+  text-align: center;
 }
