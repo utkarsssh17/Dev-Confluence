@@ -1,10 +1,13 @@
-<div class="custom-card-container" data-custom-state="#about">
+<div class="custom-card-container login-card" data-custom-state="#about">
   <div class="custom-card-header-container">
-    <div class="custom-card-cover-container"
-      style="background-image: url('{{user.profilePicture}}')"></div>
-    <img class="custom-card-avatar-container" src="{{user.profilePicture}}" alt="avatar" />
+      {{#if user.profilePicture}}
+        <img class="custom-card-avatar-container" src="{{user.profilePicture}}" alt="avatar" />
+        {{else}}
+        <img class="custom-card-avatar-container" src="/public/images/user_placeholder.png" alt="avatar" />
+      {{/if}}
     <h1 class="custom-card-fullname-container">{{user.firstName}} {{user.lastName}}</h1>
   </div>
+  <hr class="my-1 m-hr">
   <div class="custom-card-main-container">
     <div class="custom-card-section-container is-active" id="about">
       <div class="custom-card-content-container">
