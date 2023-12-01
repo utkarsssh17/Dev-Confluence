@@ -7,10 +7,12 @@
         <div class="row spacer">
 
 
-            
-            <div class="col">
+
+            <div class="col-12">
                 <div class="row" id="eventDetailsName1">
-                    <div class="col-xs-6 col-sm-6 col-6 card spacer">
+                    <div class="col">
+                        <div class="row">
+                             <div class="col-xs-6 col-sm-6 col-6 card ">
                         {{!-- Event name and description --}}
                         <div class="form-group">
                             <label for="eventTitle">
@@ -39,7 +41,8 @@
                                 <div class="col">
 
                                 </div>
-                                <div class="col-xs-3" style="display: flex; flex-direction: row;justify-content: flex-end;">
+                                <div class="col-xs-3"
+                                    style="display: flex; flex-direction: row;justify-content: flex-end;">
                                     <div class="forward" onclick="forwarding(1,2)" id="Button1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                             fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
@@ -60,48 +63,128 @@
                         </h5>
                     </div>
                 </div>
+                        </div>
+                    </div>
+                   
+
+
                 <div class="row" style="display: none;" id="eventDetailsName2">
                     <div class="col">
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-6  card">
-                        <div class="form-group ">
-                            <div class="form-row">
-                                <div class="form-group col-md-9">
-                                    <label for="eventLocation">
-                                        <h6>Location</h6>
-                                    </label>
-                                    <input type="text" class="form-control" id="eventLocation" name="eventLocation"
-                                        placeholder="Enter event location" required />
-                                </div>
-                            </div>
+                                <div class="form-group ">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-9">
+                                            <label for="eventLocation">
+                                                <h6>Location</h6>
+                                            </label>
+                                            <input type="text" class="form-control" id="eventLocation"
+                                                name="eventLocation" placeholder="Enter event location" required />
+                                        </div>
+                                    </div>
 
 
-                            <div class="form-row">
-                                <div class="form-group col-md-9">
-                                    <label for="eventDate">
-                                        <h6>Event Date</h6>
-                                    </label>
-                                    <input type="date" class="form-control" id="eventDate" name="eventDate" required />
+                                    <div class="form-row">
+                                        <div class="form-group col-md-9">
+                                            <label for="eventDate">
+                                                <h6>Event Date</h6>
+                                            </label>
+                                            <input type="date" class="form-control" id="eventDate" name="eventDate"
+                                                required />
+                                        </div>
+                                        <div class="form-group col-md-9">
+                                            <label for="eventTime">
+                                                <h6>Event Time</h6>
+                                            </label>
+                                            <input type="time" class="form-control" id="eventTime" name="eventTime"
+                                                required />
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-9">
+                                            <label for="eventDuration">
+                                                <h6>Duration (in minutes):</h6>
+                                            </label>
+                                            <input type="number" class="form-control" id="eventDuration"
+                                                name="eventDuration" placeholder="Enter duration in minutes" min="1"
+                                                required />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-9">
-                                    <label for="eventTime">
-                                        <h6>Event Time</h6>
-                                    </label>
-                                    <input type="time" class="form-control" id="eventTime" name="eventTime" required />
+                                <div class="row">
+                                    <div class="col centerify" onclick="backing(2,1)">
+                                        <div class="back">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col centerify">
+                                        <div class="forward" onclick="forwarding(2,3)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-9">
-                                    <label for="eventDuration">
-                                        <h6>Duration (in minutes):</h6>
-                                    </label>
-                                    <input type="number" class="form-control" id="eventDuration" name="eventDuration"
-                                        placeholder="Enter duration in minutes" min="1" required />
-                                </div>
+                            <div class="col-xs-4 col-sm-4 col-4 imageCSS">
+                                <img src="/public/images/dateandtime.jpeg" alt="" width="350px" height="350px">
+                                <br>
+                                <h5>
+                                    <center>Choose a great<b> date</b> and <b>time</b> for your event</center>
+                                </h5>
                             </div>
                         </div>
+                    </div>
+
+                </div>
+
+
+                {{!-- next --}}
+                <div class="row" id="eventDetailsName3" style="display: none;">
+                    <div class="col">
                         <div class="row">
-                            <div class="col centerify" onclick="backing(2,1)">
+                             <div class="col-xs-8 col-sm-8 spacer card">
+                        {{!-- Event name and description --}}
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="form-group col-md-9">
+                                    <label for="eventCategory">
+                                        <h1>Categories</h1>
+                                    </label>
+                                    <select class="form-control" id="eventCategory" name="eventCategory[]" multiple>
+                                        {{#each categories}}
+                                        <option value="{{this}}">{{this}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-9">
+                                    <label for="eventPhotos">
+                                        <h1>Event Photos:
+                                    </label></h1>
+                                    <input type="file" class="form-control-file" id="eventPhotos" name="eventPhotos"
+                                        multiple accept="image/*">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <div id="photoPreview" class="d-flex flex-wrap"></div>
+                                    <small id="photoCount" class="form-text text-muted"></small>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col centerify" onclick="backing(3,2)">
                                 <div class="back">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                                         class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -111,84 +194,28 @@
                                 </div>
                             </div>
                             <div class="col centerify">
-                                <div class="forward" onclick="forwarding(2,3)">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                    </svg>
+                                <div>
+                                    <button type="submit" class="btn btn-success btn-block"><b>Submit</b></button>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
-                    <div class="col-xs-3 col-sm-3 col-3 imageCSS">
-                        <img src="/public/images/dateandtime.jpeg" alt="" width="350px" height="350px">
+                    <div class="col-3 imageCSS">
+                        <img src="/public/images/photoForEvents.jpeg" alt="Photo of a person clicking a photo" width="350px" height="350px">
                         <br>
                         <h5>
-                            <center>Brainstorm on a <b>Great Name</b></center>
+                            <center>Pick some good <b>photos</b> for your event</center>
                         </h5>
                     </div>
                         </div>
                     </div>
-                    
-                </div>
-
-
-                {{!-- next --}}
-
-                <div class="col-xs-12 col-sm-12  card" id="eventDetailsName3" style="display: none;">
-                    {{!-- Event name and description --}}
-                    <div class="form-group">
-                        <label for="eventCategory">
-                            <h1>Categories</h1>
-                        </label>
-                        <select class="form-control" id="eventCategory" name="eventCategory[]" multiple>
-                            {{#each categories}}
-                            <option value="{{this}}">{{this}}</option>
-                            {{/each}}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="eventPhotos">
-                            <h1>Event Photos:
-                        </label></h1>
-                        <input type="file" class="form-control-file" id="eventPhotos" name="eventPhotos" multiple
-                            accept="image/*">
-                    </div>
-                    <div class="form-group">
-                        <div id="photoPreview" class="d-flex flex-wrap"></div>
-                        <small id="photoCount" class="form-text text-muted"></small>
-                    </div>
-                    <div class="row">
-                        <div class="col centerify" onclick="backing(3,2)">
-                            <div class="back">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                    class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="col centerify">
-                            <div>
-                                <button type="submit" class="btn btn-success btn-block"><b>Submit</b></button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-
-
-
-
-                        </div>
-
-                    </div>
+                   
 
 
                 </div>
+
 
 
 
