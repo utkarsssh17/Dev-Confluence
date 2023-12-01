@@ -55,7 +55,8 @@ const login = (req, res, next) => {
                 return res.render('login', { errorMessage: req.flash('errorMessage'), username: req.body.username });
             }
 
-            return res.redirect(`/user/${user.username}`);
+            return res.redirect(`/`);
+            //user/${user.username}
         });
     })(req, res, next);
 };
