@@ -1,8 +1,29 @@
 <script src="../public/js/create-event.js"></script>
 <div class="container" style="margin-top: 10px;">
     <form id="create-event-form" enctype="multipart/form-data">
-        <div class="row ">
-            <div class="col centerify">step counter</div>
+        <div class="row " style="background-color: black;color:white;border-radius:10px;width:50%">
+            <div class="col centerify">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Steps::</h5>
+                    </div>
+
+                    <div class="col-md-6 ">
+                        <div class="row" style="align-items: center;">
+                            <div class="col-6 centerify"><b>
+                                    <h4 id="pageCounter" style="color:greenyellow;font-weight:900;"></h4>
+                                </b></div>
+                            <div class="col-6">
+                                <h5>/3</h5>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
         </div>
         <div class="row spacer">
 
@@ -12,60 +33,64 @@
                 <div class="row" id="eventDetailsName1">
                     <div class="col">
                         <div class="row">
-                             <div class="col-xs-6 col-sm-6 col-6 card ">
-                        {{!-- Event name and description --}}
-                        <div class="form-group">
-                            <label for="eventTitle">
-                                <h6>Event Name</h6>
-                            </label>
-                            <h2><input type="text" class="form-control" id="eventTitle" name="eventTitle"
-                                    placeholder="Enter event name" required />
-                            </h2>
-                            <small id="emailHelp" class="form-text text-muted">Having a great name can give you the
-                                traction you
-                                need</small>
+                            <div class="col-xs-6 col-sm-6 col-6 card ">
+                                {{!-- Event name and description --}}
+                                <div class="form-group">
+                                    <label for="eventTitle">
+                                        <h6>Event Name: <b style="color:red;font-weight:900">*</b></h6>
+                                    </label>
+                                    <h2><input type="text" class="form-control" id="eventTitle" name="eventTitle"
+                                            placeholder="Enter event name" required />
+                                    </h2>
+                                    <small id="emailHelp" class="form-text text-muted">Having a great name can give you
+                                        the
+                                        traction you
+                                        need</small>
 
-                            <br>
-                            <br>
-                            <label for="eventDescription">
-                                <h6>Description</h6>
-                            </label>
-                            <textarea class="form-control" id="eventDescription" name="eventDescription"
-                                placeholder="Enter event description" rows="5" required></textarea>
-                            <div class="form-group">
-                                <label for="eventMaxCapacity">Max Capacity:</label>
-                                <input type="number" class="form-control" id="eventMaxCapacity" name="eventMaxCapacity"
-                                    placeholder="Enter max capacity" min="1" required />
-                            </div>
-                            <div class="row">
-                                <div class="col">
+                                    <br>
+                                    <br>
+                                    <label for="eventDescription">
+                                        <h6>Description: <b style="color:red;font-weight:900">*</b></h6>
+                                    </label>
+                                    <textarea class="form-control" id="eventDescription" name="eventDescription"
+                                        placeholder="Enter event description" rows="5" required></textarea>
+                                    <small id="emailHelp" class="form-text text-muted">Have crisp detail for your event
+                                        not to much and not too less.</small>
+                                    <div class="form-group">
+                                        <label for="eventMaxCapacity">Max Capacity: <b
+                                                style="color:red;font-weight:900">*</b></label>
+                                        <input type="number" class="form-control" id="eventMaxCapacity"
+                                            name="eventMaxCapacity" placeholder="Enter max capacity" min="1" required />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
 
-                                </div>
-                                <div class="col-xs-3"
-                                    style="display: flex; flex-direction: row;justify-content: flex-end;">
-                                    <div class="forward" onclick="forwarding(1,2)" id="Button1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                            fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                        </svg>
+                                        </div>
+                                        <div class="col-xs-3"
+                                            style="display: flex; flex-direction: row;justify-content: flex-end;">
+                                            <div class="forward" onclick="forwarding(1,2)" id="Button1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                    fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                                </svg>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-3 imageCSS">
+                                <img src="/public/images/brainstorming.png" alt="" width="350px" height="350px">
+                                <br>
+                                <h5>
+                                    <center>Brainstorm on a <b>Great Name</b></center>
+                                </h5>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="col-xs-3 col-sm-3 col-3 imageCSS">
-                        <img src="/public/images/brainstorming.png" alt="" width="350px" height="350px">
-                        <br>
-                        <h5>
-                            <center>Brainstorm on a <b>Great Name</b></center>
-                        </h5>
                     </div>
                 </div>
-                        </div>
-                    </div>
-                   
+
 
 
                 <div class="row" style="display: none;" id="eventDetailsName2">
@@ -80,6 +105,8 @@
                                             </label>
                                             <input type="text" class="form-control" id="eventLocation"
                                                 name="eventLocation" placeholder="Enter event location" required />
+                                            <small id="emailHelp" class="form-text text-muted">Type the exact
+                                                location</small>
                                         </div>
                                     </div>
 
@@ -91,6 +118,12 @@
                                             </label>
                                             <input type="date" class="form-control" id="eventDate" name="eventDate"
                                                 required />
+                                            <small id="emailHelp" class="form-text text-muted">Click on the <svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                                </svg> icon</small>
                                         </div>
                                         <div class="form-group col-md-9">
                                             <label for="eventTime">
@@ -98,6 +131,14 @@
                                             </label>
                                             <input type="time" class="form-control" id="eventTime" name="eventTime"
                                                 required />
+                                            <small id="emailHelp" class="form-text text-muted">Click on the <svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                                                    <path
+                                                        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
+                                                </svg> icon</small>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -108,6 +149,7 @@
                                             <input type="number" class="form-control" id="eventDuration"
                                                 name="eventDuration" placeholder="Enter duration in minutes" min="1"
                                                 required />
+
                                         </div>
                                     </div>
                                 </div>
@@ -149,69 +191,77 @@
                 <div class="row" id="eventDetailsName3" style="display: none;">
                     <div class="col">
                         <div class="row">
-                             <div class="col-xs-8 col-sm-8 spacer card">
-                        {{!-- Event name and description --}}
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="form-group col-md-9">
-                                    <label for="eventCategory">
-                                        <h1>Categories</h1>
-                                    </label>
-                                    <select class="form-control" id="eventCategory" name="eventCategory[]" multiple>
-                                        {{#each categories}}
-                                        <option value="{{this}}">{{this}}</option>
-                                        {{/each}}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-9">
-                                    <label for="eventPhotos">
-                                        <h1>Event Photos:
-                                    </label></h1>
-                                    <input type="file" class="form-control-file" id="eventPhotos" name="eventPhotos"
-                                        multiple accept="image/*">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <div id="photoPreview" class="d-flex flex-wrap"></div>
-                                    <small id="photoCount" class="form-text text-muted"></small>
-                                </div>
-                            </div>
+                            <div class="col-xs-8 col-sm-8 spacer card">
+                                {{!-- Event name and description --}}
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-9">
+                                            <label for="eventCategory">
+                                                <h1>Categories</h1>
+                                            </label>
+                                            <select class="form-control" id="eventCategory" name="eventCategory[]"
+                                                multiple>
+                                                {{#each categories}}
+                                                <option value="{{this}}">{{this}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                        <small id="emailHelp" class="form-text text-muted">Choose cateogires for you
+                                            events, use CtRL+ clicking on the options for multiple categories</small>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-9">
+                                            <label for="eventPhotos">
+                                                <h1>Event Photos:
+                                            </label></h1>
+                                            <input type="file" class="form-control-file" id="eventPhotos"
+                                                name="eventPhotos" multiple accept="image/*">
 
+                                        </div>
+                                        <small id="emailHelp" class="form-text text-muted"> 5 is the limit on number of
+                                            photos to be uploaded</small>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <div id="photoPreview" class="d-flex flex-wrap"></div>
+                                            <small id="photoCount" class="form-text text-muted"></small>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col centerify" onclick="backing(3,2)">
+                                        <div class="back">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col centerify">
+                                        <div>
+                                            <button type="submit"
+                                                class="btn btn-success btn-block"><b>Submit</b></button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-3 imageCSS">
+                                <img src="/public/images/photoForEvents.jpeg" alt="Photo of a person clicking a photo"
+                                    width="350px" height="350px">
+                                <br>
+                                <h5>
+                                    <center>Pick some good <b>photos</b> for your event</center>
+                                </h5>
+                            </div>
                         </div>
-
-
-                        <div class="row">
-                            <div class="col centerify" onclick="backing(3,2)">
-                                <div class="back">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                                        class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="col centerify">
-                                <div>
-                                    <button type="submit" class="btn btn-success btn-block"><b>Submit</b></button>
-                                </div>
-
-                            </div>
-                        </div>
-
                     </div>
-                    <div class="col-3 imageCSS">
-                        <img src="/public/images/photoForEvents.jpeg" alt="Photo of a person clicking a photo" width="350px" height="350px">
-                        <br>
-                        <h5>
-                            <center>Pick some good <b>photos</b> for your event</center>
-                        </h5>
-                    </div>
-                        </div>
-                    </div>
-                   
+
 
 
                 </div>
@@ -230,6 +280,11 @@
 
 
             </div> --}}
+        </div>
+        <div class="row">
+            <div class="col">
+                <i><b style="color:red;font-weight:900">*</b> is a required feild</i>
+            </div>
         </div>
 
     </form>

@@ -1,6 +1,12 @@
+let counter=1;// step counter for the step location in create-event
 document.addEventListener('DOMContentLoaded', function () {
 
     const dateInput = document.querySelector('#eventDate');
+    
+    // code to update the text in pageCounter element in create-event
+   
+    updateCounterText(counter)
+
 
     const now = new Date();
     const getCurrentDate = () => {
@@ -125,14 +131,21 @@ document.addEventListener('DOMContentLoaded', function () {
 function forwarding(curr,next){
     currForm=document.getElementById("eventDetailsName"+curr);
     nextForm=document.getElementById("eventDetailsName"+next);
-    console.log("Current "+ curr);
-    console.log("next "+ next);
+    counter=counter+1;
     currForm.style.display="none";
     nextForm.style.display="block";
+    updateCounterText()
+    
 }
 function backing(curr,prev){
-    currForm=document.getElementById("eventDetailsName"+curr)
-    prevForm=document.getElementById("eventDetailsName"+prev)
+    currForm=document.getElementById("eventDetailsName"+curr);
+    prevForm=document.getElementById("eventDetailsName"+prev);
+    counter=counter-1;
     currForm.style.display="none";
     prevForm.style.display="block";
+    updateCounterText()
+}
+function updateCounterText(){
+    text=document.getElementById("pageCounter");
+    text.innerText=counter;
 }
