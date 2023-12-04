@@ -18,5 +18,9 @@ router.post('/:id/rsvp', ensureAuthenticated, eventController.rsvpEvent);
 
 // Delete event
 router.delete('/:id', ensureAuthenticated, eventController.deleteEvent);
+// Edit event
+router.get('/:id/edit', ensureAuthenticated,eventController.renderEditEvent);
+
+router.put('/:id/edit', ensureAuthenticated, eventController.editEvent);
 
 export default router;
