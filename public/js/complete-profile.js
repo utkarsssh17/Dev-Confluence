@@ -41,4 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(error);
         }
     });
+    var input = document.getElementById('location');
+    new google.maps.places.Autocomplete(input);
 });
