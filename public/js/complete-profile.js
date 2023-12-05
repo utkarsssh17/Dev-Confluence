@@ -1,5 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
     const completeProfileForm = document.getElementById('complete-profile-form');
+    const avatarContainer = document.querySelector(".custom-card-avatar-container");
+    const fileInput = document.getElementById('image');
+
+    // Add an event listener to the file input for image preview
+    fileInput.addEventListener('change', () => {
+        const selectedFile = fileInput.files[0];
+        const fileSizeErrorContainer = document.getElementById('file-size-error');
+    
+        // Clear previous error messages
+        fileSizeErrorContainer.textContent = '';
+    
+        if (selectedFile) {
+            // Set the file size limit (in bytes)
+            const fileSizeLimit = (5 * 1024 * 1024) / 10; // 5 KB
+    
+            if (selectedFile.size > fileSizeLimit) {
+                // Display an error message on the page
+                fileSizeErrorContainer.textContent = 'File size exceeds 500 KB';
+            } else {
+                const reader = new FileReader();
+    
+                reader.onload = function (e) {
+                    avatarContainer.src = e.target.result;
+                };
+    
+                reader.readAsDataURL(selectedFile);
+            }
+        }
+    });
+    
     completeProfileForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
