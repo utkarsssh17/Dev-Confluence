@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const completeProfileForm = document.getElementById('complete-profile-form');
+    const completeProfileForm = document.getElementById('edit-profile-form');
     const avatarContainer = document.querySelector(".custom-card-avatar-container");
     const fileInput = document.getElementById('image');
 
@@ -30,19 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
+
     completeProfileForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const formData = new FormData(completeProfileForm);
 
         try {
-            // Make first request to the /complete-profile route
-            await fetch('/user/complete-profile', {
+            // Make first request to the /user/username/edit route
+            await fetch(`/user/${formData.get('hiddenUsername')}/edit`, {
                 method: 'POST',
                 body: JSON.stringify({
                     firstName: formData.get('firstName'),
                     lastName: formData.get('lastName'),
-                    username: formData.get('username'),
+                    username: formData.get('hiddenUsername'),
                     email: formData.get('email'),
                     dob: formData.get('dob'),
                     location: formData.get('location'),
@@ -58,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (file && file.size > 0) {
                 const imageFormData = new FormData();
                 imageFormData.append('image', file);
-
                 await fetch('/images/upload', {
                     method: 'POST',
                     body: imageFormData
@@ -72,7 +72,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-function initMap(){
-    var input = document.getElementById('location');
-    new google.maps.places.Autocomplete(input);
-}

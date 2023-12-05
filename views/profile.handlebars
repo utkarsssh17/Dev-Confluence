@@ -42,7 +42,10 @@
               {{user.createdAt}}
             </div>
             {{#if (eq currentUser.username user.username)}}
-            <a href="/auth/logout">
+            <a class="custom-a" href="/user/{{user.username}}/edit">
+              <button class="logout-button">Edit Profile</button>
+            </a>
+            <a class="custom-a" href="/auth/logout">
               <button class="logout-button">Logout</button>
             </a>
             {{/if}}
