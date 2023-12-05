@@ -233,3 +233,7 @@ input[type="file"] {
 .spacer5 {
     margin-top: 8px;
 }
+
+#hiddenUsername {
+    display: none;
+}

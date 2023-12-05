@@ -38,12 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // Make first request to the /user/username/edit route
-            await fetch(`/user/${formData.get('username')}/edit`, {
+            await fetch(`/user/${formData.get('hiddenUsername')}/edit`, {
                 method: 'POST',
                 body: JSON.stringify({
                     firstName: formData.get('firstName'),
                     lastName: formData.get('lastName'),
-                    username: formData.get('username'),
+                    username: formData.get('hiddenUsername'),
                     email: formData.get('email'),
                     dob: formData.get('dob'),
                     location: formData.get('location'),
