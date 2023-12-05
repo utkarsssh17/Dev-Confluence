@@ -2,6 +2,7 @@ import { upload as multerUpload } from "../config/multer.js";
 import * as s3 from "../config/s3.js";
 import * as helperFn from "./helpers.js";
 import User from "../models/user.js";
+import Event from "../models/event.js";
 import path from "path";
 import Event from "../models/event.js";
 
@@ -43,7 +44,7 @@ const uploadProfilePicture = async (req, res, next) => {
     });
 };
 
-// Get signed URL of an object
+// Get signed URL of a photo
 const getSignedUrl = async (fileName) => {
     if (!fileName) {
         return null;
@@ -82,4 +83,4 @@ const uploadEventPhotos = async (req, res, next) => {
     });
 };
 
-export { uploadImageToS3, uploadProfilePicture, getSignedUrl,uploadEventPhotos };
+export { uploadImageToS3, uploadProfilePicture, getSignedUrl, uploadEventPhotos };
