@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
    
     updateCounterText(counter)
 
+    // eventLocation
+
+    
 
     const now = new Date();
     const getCurrentDate = () => {
@@ -128,6 +131,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+function initMap(){
+    var input = document.getElementById('eventLocation');
+    new google.maps.places.Autocomplete(input);
+}
 function forwarding(curr,next){
     currForm=document.getElementById("eventDetailsName"+curr);
     nextForm=document.getElementById("eventDetailsName"+next);

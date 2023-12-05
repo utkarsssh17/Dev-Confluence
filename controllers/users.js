@@ -142,4 +142,48 @@ const updateUserProfile = async (req, res, next) => {
     }
 };
 
-export { registerUser, completeProfile, getProfile, redirectToProfile, updateUserProfile };
+// Edit user profile
+const editUserProfile = async (req, res, next) => {
+    //if user has google account, email cannot be changed
+    if (req.user.googleId) {
+        req.body.email = req.user.email;
+    }
+
+    const { firstName, lastName, username, email, dob, location, bio } = req.body;
+
+    // Validate required fields
+    if (!firstName || !lastName || !username || !email || !dob || !location || !bio) {
+        req.flash("errorMessage", "All fields are required.");
+        return res.status(400).render('edit-profile', { errorMessage: req.flash('errorMessage'), user: req.body });
+    }
+
+    try {
+        helperFn.isValidName(firstName);
+        helperFn.isValidName(lastName);
+        // if username is same as previous, then validations not required
+        if (username !== req.user.username) {
+            helperFn.isValidUsername(username);
+            await helperFn.usernameExists(username);
+        }
+        // if user has registered through Google, then email cannot be changed
+        if (req.user.googleId) {
+            req.body.email = req.user.email;
+        }
+        // if email is same as previous, then validations not required
+        if (email !== req.user.email) {
+            helperFn.isValidEmail(email);
+            await helperFn.emailExists(email);
+        }
+        helperFn.isValidDOB(dob);
+        helperFn.isValidBio(bio);
+        req.body.isProfileComplete = true;
+        await updateUserProfile(req, res, next);
+        const userProfileUrl = `/user/${username}`;
+        return res.redirect(userProfileUrl);
+    } catch (error) {
+        req.flash("errorMessage", error);
+        return res.status(400).render('edit-profile', { errorMessage: req.flash('errorMessage'), user: req.body });
+    }
+};
+
+export { registerUser, completeProfile, getProfile, redirectToProfile, updateUserProfile, editUserProfile };

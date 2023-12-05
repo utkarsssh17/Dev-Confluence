@@ -7,7 +7,6 @@ import User from "../models/user.js";
 const eventCategories = ["Python","Unix","Cloud","Security","Devops","Front-End","Back-End"];
 
 const renderCreateEvent = (req, res) => {
-    console.log("reached here");
     res.render("create-event", { title: "Create an Event", user: req.user, categories: eventCategories });
 };
 
@@ -188,7 +187,7 @@ const editEvent = async (req, res, next) => {
 
         event.title = eventTitle;
         event.description = eventDescription;
-        event.eventLocation = eventLocation;
+        event.location = eventLocation;
         event.eventDate = eventDate;
         event.eventTime = eventTime;
         event.duration = eventDuration;

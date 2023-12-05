@@ -1,0 +1,66 @@
+<script src="../../public/js/edit-profile.js"></script>
+<div class="custom-card-container login-card" data-custom-state="#about">
+    <div class="custom-card-subtitle-container mt-4">EDIT PROFILE</div>
+    <form id="edit-profile-form" enctype="multipart/form-data">
+        <div class="custom-card-header-container">
+            {{#if user.profilePicture}}
+            <img class="custom-card-avatar-container" src="{{user.profilePicture}}" alt="avatar" />
+            {{else}}
+            <img class="custom-card-avatar-container" src="/public/images/user_placeholder.png" alt="avatar" />
+            {{/if}}
+            <div>
+                <label for="image" class="custom-file-upload">
+                    <input type="file" id="image" name="image" accept="image/*" />
+                    <i class="fa fa-cloud-upload"></i>
+                    Change profile picture
+                </label>
+                <div id="file-size-error" class="error-message"></div>
+            </div>
+        </div>
+        <hr class="my-1 m-hr">
+        <div class="custom-card-section-container is-active" id="about">
+            <div class="custom-card-content-container">
+                <div class="form-group mb-3">
+                    <label for="firstName">First Name*</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="{{user.firstName}}"
+                        required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="lastName">Last Name*</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" value="{{user.lastName}}"
+                        required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="username">Username*</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{user.username}}"
+                        required disabled/>
+                    <input type="hidden" id="hiddenUsername" name="hiddenUsername" value="{{user.username}}" />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="email">Email*</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{user.email}}" required disabled/>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="dob">Date of Birth*</label>
+                    <input type="date" class="form-control" id="dob" name="dob" value="{{user.dob}}" required />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" id="location" name="location" value="{{user.location}}" />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="bio">Bio</label>
+                    <textarea class="form-control" id="bio" name="bio">{{user.bio}}</textarea>
+                </div>
+                <div class="mb-3"></div>
+                <div class="form-group mb-3">
+                    <button type="submit" class="logout-button">Save Profile</button>
+                    <a href="/user/profile">
+                        <button class="logout-button">Cancel</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+</div>
+</form>
+</div>
