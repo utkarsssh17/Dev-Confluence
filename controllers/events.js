@@ -188,7 +188,7 @@ const editEvent = async (req, res, next) => {
 
         event.title = eventTitle;
         event.description = eventDescription;
-        event.eventLocation = eventLocation;
+        event.location = eventLocation;
         event.eventDate = eventDate;
         event.eventTime = eventTime;
         event.duration = eventDuration;

@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const eventLocation = document.querySelector('#eventLocation').value;
             const eventDescription = document.querySelector('#eventDescription').value;
 
-            
             formData.append('eventTitle', eventTitle);
             formData.append('eventDate', eventDate);
             formData.append('eventLocation', eventLocation);
@@ -82,5 +81,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(error => console.error(error));
         });
+        
     }
+    
+
 });
+
+function initMap(){
+    var input = document.getElementById('eventLocation');
+    new google.maps.places.Autocomplete(input);
+   
+}
