@@ -7,7 +7,6 @@ import User from "../models/user.js";
 const eventCategories = ["Python","Unix","Cloud","Security","Devops","Front-End","Back-End"];
 
 const renderCreateEvent = (req, res) => {
-    console.log("reached here");
     res.render("create-event", { title: "Create an Event", user: req.user, categories: eventCategories });
 };
 

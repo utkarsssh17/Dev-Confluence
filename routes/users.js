@@ -25,4 +25,21 @@ router.get('/profile', ensureAuthenticated, userController.redirectToProfile);
 // User Profile
 router.get('/:username', ensureAuthenticated, userController.getProfile);
 
+// Edit user profile
+router.get('/:username/edit', ensureAuthenticated, (req, res, next) => {
+    if (req.user.username !== req.params.username) {
+        return res.render("error", { title: "Forbidden", statusCode: 403, errorMessage: "You are not authorized to edit this profile.", user: req.user });
+    } else {
+        userController.getProfile(req, res, next);
+    }
+});
+
+router.post('/:username/edit', ensureAuthenticated, (req, res, next) => {
+    if (req.user.username !== req.params.username) {
+        return res.render("error", { title: "Forbidden", statusCode: 403, errorMessage: "You are not authorized to edit this profile.", user: req.user });
+    } else {
+        userController.editUserProfile(req, res, next);
+    }
+});
+
 export default router;
