@@ -3,6 +3,7 @@ import * as s3 from "../config/s3.js";
 import * as helperFn from "./helpers.js";
 import User from "../models/user.js";
 import path from "path";
+import Event from "../models/event.js";
 
 // Upload image to S3
 const uploadImageToS3 = async (file) => {
@@ -55,4 +56,30 @@ const getSignedUrl = async (fileName) => {
     }
 };
 
-export { uploadImageToS3, uploadProfilePicture, getSignedUrl };
+// Upload event photos
+const uploadEventPhotos = async (req, res, next) => {
+    multerUpload(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json({ message: err.message });
+        }
+        try {
+            if (!req.files['images']) {
+                return res.status(400).json({ message: "Please upload atleast one photo." });
+            }
+            const photos = []
+            for (const file of req.files['images']) {
+                const result = await uploadImageToS3(file);
+                photos.push(result.fileName);
+            }
+            const event = await Event.findById(req.params.eventId);
+            event.photos = photos;
+            event.displayPicture = photos[0];
+            await event.save();
+            return res.status(200).json({ imageUrls: photos });
+        } catch (error) {
+            return res.status(400).json({ message: error.message });
+        }
+    });
+};
+
+export { uploadImageToS3, uploadProfilePicture, getSignedUrl,uploadEventPhotos };

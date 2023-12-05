@@ -81,7 +81,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 .catch(error => console.error(error));
         });
+        
     }
+    
+
+});
+
+function initMap(){
     var input = document.getElementById('eventLocation');
     new google.maps.places.Autocomplete(input);
-});
+   
+}

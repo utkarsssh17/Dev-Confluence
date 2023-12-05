@@ -130,9 +130,11 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error(error);
         }
     });
+});
+function initMap(){
     var input = document.getElementById('eventLocation');
     new google.maps.places.Autocomplete(input);
-});
+}
 function forwarding(curr,next){
     currForm=document.getElementById("eventDetailsName"+curr);
     nextForm=document.getElementById("eventDetailsName"+next);
