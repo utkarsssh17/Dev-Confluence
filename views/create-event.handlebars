@@ -1,7 +1,7 @@
 <script src="../public/js/create-event.js"></script>
 <script async
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXFhjOoiZOfdDkpKWXXcibOGzN69Nx53M&libraries=places&callback=initMap">
-</script>
+    </script>
 
 
 <div class="container" style="margin-top: 10px;">
@@ -45,7 +45,7 @@
                                         <h6>Event Name: <b style="color:red;font-weight:900">*</b></h6>
                                     </label>
                                     <h2><input type="text" class="form-control" id="eventTitle" name="eventTitle"
-                                            placeholder="Enter event name" required onkeyup="b1checker()"/>
+                                            placeholder="Enter event name" required onkeyup="b1checker()" />
                                     </h2>
                                     <small id="emailHelp" class="form-text text-muted">Having a great name can give you
                                         the
@@ -65,7 +65,8 @@
                                         <label for="eventMaxCapacity">Max Capacity: <b
                                                 style="color:red;font-weight:900">*</b></label>
                                         <input type="number" class="form-control" id="eventMaxCapacity"
-                                            name="eventMaxCapacity" placeholder="Enter max capacity" min="1" onkeyup="b1checker()" onchange="b1checker()" required />
+                                            name="eventMaxCapacity" placeholder="Enter max capacity" min="1"
+                                            onkeyup="b1checker()" onchange="b1checker()" required />
                                     </div>
                                     <div class="row">
                                         <div class="col">
@@ -73,7 +74,8 @@
                                         </div>
                                         <div class="col-xs-3"
                                             style="display: flex; flex-direction: row;justify-content: flex-end;">
-                                            <div class="forward" style="display: none;" onclick="forwarding(1,2)" id="Button1">
+                                            <div class="forward" style="display: none;" onclick="forwarding(1,2)"
+                                                id="Button1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                                     fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd"
@@ -106,10 +108,11 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-9">
                                             <label for="eventLocation">
-                                                <h6>Location  <b style="color:red;font-weight:900">*</b></h6>
+                                                <h6>Location <b style="color:red;font-weight:900">*</b></h6>
                                             </label>
                                             <input type="text" class="form-control" id="eventLocation"
-                                                name="eventLocation" placeholder="Enter event location" onkeyup="b2checker()" required />
+                                                name="eventLocation" placeholder="Enter event location"
+                                                onkeyup="b2checker()" required />
                                             <small id="emailHelp" class="form-text text-muted">Type the exact
                                                 location</small>
                                         </div>
@@ -119,10 +122,10 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-9">
                                             <label for="eventDate">
-                                                <h6>Event Date  <b style="color:red;font-weight:900">*</b></h6>
+                                                <h6>Event Date <b style="color:red;font-weight:900">*</b></h6>
                                             </label>
-                                            <input type="date" class="form-control" id="eventDate" name="eventDate" onkeyup="b2checker()"
-                                                required />
+                                            <input type="date" class="form-control" id="eventDate" name="eventDate"
+                                                onkeyup="b2checker()" required />
                                             <small id="emailHelp" class="form-text text-muted">Click on the <svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
@@ -132,10 +135,10 @@
                                         </div>
                                         <div class="form-group col-md-9">
                                             <label for="eventTime">
-                                                <h6>Event Time  <b style="color:red;font-weight:900">*</b></h6>
+                                                <h6>Event Time <b style="color:red;font-weight:900">*</b></h6>
                                             </label>
-                                            <input type="time" class="form-control" id="eventTime" name="eventTime" onkeyup="b2checker()"
-                                                required />
+                                            <input type="time" class="form-control" id="eventTime" name="eventTime"
+                                                onkeyup="b2checker()" required />
                                             <small id="emailHelp" class="form-text text-muted">Click on the <svg
                                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
@@ -149,11 +152,12 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-9">
                                             <label for="eventDuration">
-                                                <h6>Duration (in minutes):  <b style="color:red;font-weight:900">*</b></h6>
+                                                <h6>Duration (in minutes): <b style="color:red;font-weight:900">*</b>
+                                                </h6>
                                             </label>
                                             <input type="number" class="form-control" id="eventDuration"
-                                                name="eventDuration" placeholder="Enter duration in minutes" min="1" onkeyup="b2checker()" onchange="b2checker()"
-                                                required />
+                                                name="eventDuration" placeholder="Enter duration in minutes" min="1"
+                                                onkeyup="b2checker()" onchange="b2checker()" required />
 
                                         </div>
                                     </div>
@@ -169,7 +173,8 @@
                                         </div>
                                     </div>
                                     <div class="col centerify">
-                                        <div class="forward" onclick="forwarding(2,3)" style="display: none;" id="Button2">
+                                        <div class="forward" onclick="forwarding(2,3)" style="display: none;"
+                                            id="Button2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                                 fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
@@ -215,16 +220,24 @@
                                             events, use CtRL+ clicking on the options for multiple categories</small>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-9">
-                                            <label for="eventPhotos">
-                                                <h1>Event Photos:
-                                            </label></h1>
-                                            <input type="file" class="form-control-file" id="eventPhotos"
-                                                name="eventPhotos" multiple accept="image/*">
+                                        {{!-- <div class="form-group col-md-9"> --}}
 
-                                        </div>
+
+                                            <div class="form-group">
+                                                <label for="eventPhotos" class="custom-file-upload">
+                                                    <input type="file" class="form-control-file" id="eventPhotos"
+                                                        name="eventPhotos" accept="image/*" multiple />
+                                                    <i class="fa fa-cloud-upload"></i>
+                                                    Add your photos
+                                                </label>
+                                                <div id="file-size-error" class="error-message"></div>
+                                            </div>
+
+
+                                            {{!--
+                                        </div> --}}
                                         <small id="emailHelp" class="form-text text-muted"> 5 is the limit on number of
-                                            photos to be uploaded</small>
+                                            photos to be uploaded, use CTRL and click on the photos</small>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
