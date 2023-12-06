@@ -5,10 +5,10 @@
 <div class="container mt-2">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
+            <div class="card border-0">
+                {{!-- <div class="card-header">
                     <h1 class="fw-bold text-center">{{event.title}}</h1>
-                </div>
+                </div> --}}
                 <div class="card-body">
                     {{!--<div class="row">
                         {{!-- <div class="col-md-6">
@@ -211,8 +211,8 @@
                     </div>
                     {{/if}}
                     
-                    <div class="card mt-3">
-                        <div class="card-header">
+                    <div class="card border-0 mt-3">
+                        <div class="card-header bg-transparent">
                             <p class="fw-bold event-page-title">Who's Attending:</p>
                         </div>
                         <div class="card-body">
@@ -244,8 +244,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="card mt-3 comment-card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card mt-3 border-0 comment-card">
+                        <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
                             <p class="fw-bold m-0 event-page-title" id="comment-heading">Comments:</p>
                             {{#if user}}
                             <button class="btn btn-primary add-comment-btn" data-action="add-comment">Add
@@ -330,8 +330,8 @@
                             {{/if}}
                         </div>
                     </div>
-                    <div class="card mt-3 review-card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card border-0 mt-3 review-card">
+                        <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
                             <p class="fw-bold m-0 event-page-title" id="review-heading">Reviews:</p>
                             {{#if event.isPastEvent}}
                             {{#if isAttendee}}
