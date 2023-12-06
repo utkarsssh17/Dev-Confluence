@@ -4,7 +4,6 @@ import * as helperFn from "./helpers.js";
 import User from "../models/user.js";
 import Event from "../models/event.js";
 import path from "path";
-import Event from "../models/event.js";
 
 // Upload image to S3
 const uploadImageToS3 = async (file) => {
