@@ -8,6 +8,43 @@
   <h2 class="mb-4">All Meetups</h2>
   <div class="row">
     {{#each events}}
+    
+    <div class="col-md-6 mb-6">
+      <a href="/events/{{this._id}}">
+        <div class="custom-card">
+    {{#if this.displayPicture}}
+    <img class="custom-card-image"  src={{this.displayPicture}} alt={{this.title}}>
+    {{else}}
+    <img class="custom-card-image"  src="https://source.unsplash.com/random/200x400?sig={{@index}}" alt={{this.title}}>
+    {{!-- Todo remove above just to showcase some image --}}
+    {{!-- <img class="custom-card-image"  src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Comic_image_missing.svg" alt={{this.title}}> --}}
+
+    {{/if}}
+    <div class="custom-card-body">
+    <div class="custom-card-left-block">
+        <div class="custom-card-title">{{this.title}}</div>
+        <div class="custom-card-location">
+        <i class="fa-solid fa-location-dot location-icon" style="color: #f76e40;"></i>
+        {{this.location}}
+        {{!-- Hoboken --}}
+        </div>
+    </div>
+    <div class="custom-card-right-block">
+      
+        <div class="custom-card-time">{{this.eventTime}}</div>
+    </div>
+  
+    {{!-- <div class="row">
+        <div class="col">
+          <div class="custom-card-date">{{this.eventDate}}</div>
+        </div>
+        
+      </div> --}}
+    </div>
+    </div>
+  </a>
+</div>
+{{!-- 
     <div class="col-md-4 mb-4">
       <div class="card h-100">
         <a href="/events/{{this._id}}">
@@ -22,7 +59,7 @@
           </div>
         </a>
       </div>
-    </div>
+    </div> --}}
     {{/each}}
   </div>
 </div>
