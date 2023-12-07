@@ -9,18 +9,26 @@
   <div class="row">
     {{#each events}}
     <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <a href="/events/{{this._id}}">
-          {{#if this.displayPicture}}
-          <img src="{{this.displayPicture}}" class="card-img-top event-img" alt="{{this.title}}">
-          {{else}}
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
-            class="card-img-top event-img" alt="Event Picture Not Available">
-          {{/if}}
-          <div class="card-body">
-            <p class="card-title text-center event-title-home">{{this.title}}</p>
+      <div class="custom-card">
+        {{#if this.displayPicture}}
+        <img class="custom-card-image" src={{this.displayPicture}} alt={{this.title}}>
+        {{else}}
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" class="custom-card-image"
+          alt="Event Picture Not Available">
+        {{/if}}
+        <div class="custom-card-body">
+          <div class="custom-card-left-block">
+            <div class="custom-card-title">{{this.title}}</div>
+            <div class="custom-card-location">
+              <i class="fa-solid fa-location-dot location-icon" style="color: #f76e40;"></i>
+              {{this.location}}
+            </div>
           </div>
-        </a>
+          <div class="custom-card-right-block">
+            <div class="custom-card-date">{{this.eventDate}}</div>
+            <div class="custom-card-time">{{this.eventTime}}</div>
+          </div>
+        </div>
       </div>
     </div>
     {{/each}}

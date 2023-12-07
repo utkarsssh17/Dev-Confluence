@@ -3,11 +3,20 @@ import userRoutes from "./users.js";
 import imageRoutes from "./images.js";
 import eventRoutes from "./events.js";
 import * as eventController from '../controllers/events.js';
+import * as helperFn from '../controllers/helpers.js';
 
 const constructorMethod = (app) => {
     app.get("/", async (req, res, next) => {
         try {
             const events = await eventController.getAllEvents();
+            // format all event dates
+            for (let i = 0; i < events.length; i++) {
+                events[i].eventDate = helperFn.formatHomeEventDate(events[i].eventDate);
+            }
+            // format 24 hour time to 12 hour time
+            for (let i = 0; i < events.length; i++) {
+                events[i].eventTime = helperFn.formatTime(events[i].eventTime);
+            }
             res.render("home", { title: "Dev Confluence",events, user: req.user });
         } catch (error) {
             next(error);

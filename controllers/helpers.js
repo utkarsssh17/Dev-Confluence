@@ -149,6 +149,26 @@ const formatDate = (dateString) => {
     return date.toISOString().slice(0, 10);
 }
 
+const formatHomeEventDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'short' });
+    const getOrdinal = (n) => {
+        const s = ["th", "st", "nd", "rd"];
+        const v = n % 100;
+        return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    }
+    return `${getOrdinal(day)} ${month}`;
+}
+
+const formatTime = (time) => {
+    let [hours, minutes] = time.split(':');
+    hours = parseInt(hours, 10);
+    const suffix = hours >= 12 ? 'PM' : 'AM';
+    const twelveHourFormat = `${hours % 12 || 12}:${minutes} ${suffix}`;
+    return twelveHourFormat;
+}
+
 const sanitizeRequest = () => {
     return (req, res, next) => {
         for (const key in req.body) {
@@ -164,4 +184,4 @@ const sanitizeRequest = () => {
     }
 }
 
-export { generateUsername, randomizeFileName, isValidName, isValidUsername, usernameExists, isValidEmail, emailExists, isValidPassword, passwordsMatch, isValidDOB, isValidBio, trimRequestFields, ensureAuthenticated, formatDate, sanitizeRequest };
+export { generateUsername, randomizeFileName, isValidName, isValidUsername, usernameExists, isValidEmail, emailExists, isValidPassword, passwordsMatch, isValidDOB, isValidBio, trimRequestFields, ensureAuthenticated, formatDate, sanitizeRequest, formatHomeEventDate, formatTime };
