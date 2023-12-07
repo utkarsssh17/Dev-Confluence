@@ -23,20 +23,22 @@
                             {{#if event.displayPicture}}
                             <img class="custom-card-image" src="{{event.displayPicture}}" alt={{event.title}}>
                             {{else}}
-                            <img class="custom-card-image" src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="Event Picture Not Available">
+                            <img class="custom-card-image"
+                                src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
+                                alt="Event Picture Not Available">
                             {{/if}}
                             <div class="custom-card-body">
-                            <div class="custom-card-left-block">
-                                <div class="custom-card-title">{{event.title}}</div>
-                                <div class="custom-card-location">
-                                <i class="fa-solid fa-location-dot location-icon" style="color: #f76e40;"></i>
-                                {{city}}
+                                <div class="custom-card-left-block">
+                                    <div class="custom-card-title">{{event.title}}</div>
+                                    <div class="custom-card-location">
+                                        <i class="fa-solid fa-location-dot location-icon" style="color: #f76e40;"></i>
+                                        {{city}}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="custom-card-right-block">
-                                <div class="custom-card-date">{{event.eventDate}}</div>
-                                <div class="custom-card-time">{{event.eventTime}}</div>
-                            </div>
+                                <div class="custom-card-right-block">
+                                    <div class="custom-card-date">{{event.eventDate}}</div>
+                                    <div class="custom-card-time">{{event.eventTime}}</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -102,7 +104,7 @@
                             </ul>
                         </div>
                     </div>--}}
-                    
+
                     <div class="row">
                         {{!-- <img class="custom-card-image" src="{{event.displayPicture}}" alt="{{event.title}}"> --}}
                         <div class="col-md-6 d-flex justify-content-center">
@@ -110,13 +112,16 @@
                                 {{#if event.displayPicture}}
                                 <img class="custom-card-image" src="{{event.displayPicture}}" alt="{{event.title}}">
                                 {{else}}
-                                <img class="custom-card-image" src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg" alt="Event Picture Not Available">
+                                <img class="custom-card-image"
+                                    src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
+                                    alt="Event Picture Not Available">
                                 {{/if}}
                                 <div class="custom-card-body">
                                     <div class="custom-card-left-block">
                                         <div class="custom-card-title">{{event.title}}</div>
                                         <div class="custom-card-location">
-                                            <i class="fa-solid fa-location-dot location-icon" style="color: #f76e40;"></i>
+                                            <i class="fa-solid fa-location-dot location-icon"
+                                                style="color: #f76e40;"></i>
                                             {{city}}
                                         </div>
                                     </div>
@@ -139,78 +144,83 @@
                         <div class="col-md-6">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Organizer: <a href="/user/{{organizer.username}}">
-                                    {{organizer.firstName}} {{organizer.lastName}}</a></li>
+                                        {{organizer.firstName}} {{organizer.lastName}}</a></li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-group list-group-flush">
                                 {{#if user}}
-                                    {{#if event.isPastEvent}}
-                                        <div class="alert alert-danger" role="alert">
-                                            This event has already passed!
-                                        </div>
-                                    {{else if (eq organizer.username user.username)}}
-                                        <li class="list-group-item">
-                                            <button class="btn btn-primary edit-event-btn" data-event-id="{{event._id}}">
-                                                Edit Event
-                                            </button>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <button class="btn btn-danger delete-event-btn" data-event-id="{{event._id}}"
-                                                data-action="delete-event">
-                                                Delete this Event
-                                            </button>
-                                        </li>
-                                    {{else if isAttendee}}
-                                        <li class="list-group-item">
-                                            <button class="btn btn-danger rsvp-btn" data-event-id="{{event._id}}" data-action="cancel">
-                                                Cancel RSVP
-                                            </button>
-                                        </li>
-                                    {{else if (eq event.remainingSeats 0)}}
-                                        <li class="list-group-item">
-                                            <div class="alert alert-danger" role="alert">
-                                                This event is full!
-                                            </div>
-                                        </li>
-                                    {{else}}
-                                        <li class="list-group-item">
-                                            <button class="btn btn-primary rsvp-btn" data-event-id="{{event._id}}" data-action="rsvp">
-                                                RSVP
-                                            </button>
-                                        </li>
-                                    {{/if}}
+                                {{#if event.isPastEvent}}
+                                <div class="alert alert-danger" role="alert">
+                                    This event has already passed!
+                                </div>
+                                {{else if (eq organizer.username user.username)}}
+                                <li class="list-group-item">
+                                    <button class="btn btn-primary edit-event-btn" data-event-id="{{event._id}}">
+                                        Edit Event
+                                    </button>
+                                </li>
+                                <li class="list-group-item">
+                                    <button class="btn btn-danger delete-event-btn" data-event-id="{{event._id}}"
+                                        data-action="delete-event">
+                                        Delete this Event
+                                    </button>
+                                </li>
+                                {{else if isAttendee}}
+                                <li class="list-group-item">
+                                    <button class="btn btn-danger rsvp-btn" data-event-id="{{event._id}}"
+                                        data-action="cancel">
+                                        Cancel RSVP
+                                    </button>
+                                </li>
+                                {{else if (eq event.remainingSeats 0)}}
+                                <li class="list-group-item">
+                                    <div class="alert alert-danger" role="alert">
+                                        This event is full!
+                                    </div>
+                                </li>
                                 {{else}}
-                                    <li class="list-group-item">
-                                        <form method="get" action="/auth/login">
-                                            <button type="submit" class="btn btn-primary">Login to RSVP!</button>
-                                        </form>
-                                    </li>
+                                <li class="list-group-item">
+                                    <button class="btn btn-primary rsvp-btn" data-event-id="{{event._id}}"
+                                        data-action="rsvp">
+                                        RSVP
+                                    </button>
+                                </li>
+                                {{/if}}
+                                {{else}}
+                                <li class="list-group-item">
+                                    <form method="get" action="/auth/login">
+                                        <button type="submit" class="btn btn-primary">Login to RSVP!</button>
+                                    </form>
+                                </li>
                                 {{/if}}
                             </ul>
                         </div>
                     </div>
-
-
-                    {{!-- <p class='event-page-title'>Event Description:</p>
-                    <p>{{event.description}}</p> --}}
-                    {{#if event.photos}}
                     <div class="row mt-3">
+                        {{!-- <p class='event-page-title'>Event Description:</p>
+                        <p>{{event.description}}</p> --}}
                         <div class="col-md-6">
-                            <div class="row">
-                                {{#each event.photos}}
-                                <div class="col-md-6 mb-3">
-                                    <img src="{{this}}" class="img-thumbnail" alt="Event Photo" style="width: 100%; height: 100%;">
+                            {{#if event.photos}}
+                                <div class="row">
+                                    {{#each event.photos}}
+                                    <div class="col-md-6 mb-3">
+                                        <img src="{{this}}" class="img-thumbnail" alt="Event Photo"
+                                            style="width: 100%; height: 100%;">
+                                    </div>
+                                    {{/each}}
                                 </div>
-                                {{/each}}
+                            {{else}}
+                            <div class="row" style="height: 100%">
+                                <div class="row d-flex justify-content-center align-content-center text-center" style="color: grey; height: 100%">No other images available</div>
                             </div>
                         </div>
+                        {{/if}}
                         <div class="col-md-6">
-                            <img style="width: 100%; height: 100%" src="https://via.placeholder.com/398x393" alt="Placeholder Image">
+                            <img style="width: 100%; height: 300px" src="../public/images/location_placeholder.jpg"
+                                alt="Placeholder Image">
                         </div>
                     </div>
-                    {{/if}}
-                    
                     <div class="card border-0 mt-3">
                         <div class="card-header bg-transparent">
                             <p class="fw-bold event-page-title">Who's Attending:</p>
