@@ -164,13 +164,13 @@ button[type="submit"] {
 }
 .event-who-attend{
   color: #ffff;
-  background-color: #639681;
+  background-color: #212529;
   padding:30px;
   border-radius: 30px;
 }
 .event-who-comment{
   color: #ffff;
-  background-color: rgb(186, 194, 112);
+  background-color: #212529;
   padding:30px;
   border-radius: 30px;
 }
