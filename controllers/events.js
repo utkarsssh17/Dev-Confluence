@@ -60,7 +60,9 @@ const getEventById = async (req, res, next) => {
 
         // Get organizer details
         const organizer = await User.findById(event.organizerId).lean();
-
+        const signedEventImageUrlProf = await imageController.getSignedUrl(organizer.profilePicture);
+        organizer["signedProfile"]=signedEventImageUrlProf;
+        
         // Get attendees details
         let isAttendee = false;
         if (event.attendees && event.attendees.length > 0) {

@@ -61,3 +61,25 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.removeItem('alertMessage');
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    var contentPara = document.getElementById("contentPara");
+    var content = contentPara.textContent;
+    var wordCount = content.split(" ").length;
+
+    if (wordCount > 50) {
+        var truncatedContent = content.split(" ").splice(0, 50).join(" ");
+        contentPara.textContent = truncatedContent + "...";
+        document.getElementById("seeMoreBtn").classList.remove("d-none");
+
+        document.getElementById("seeMoreBtn").addEventListener("click", function () {
+            document.getElementById("fullContent").textContent = content;
+            document.getElementById("seeMoreModal").classList.add("show");
+            document.getElementById("seeMoreModal").style.display = "block";
+        });
+
+        document.querySelector("#seeMoreModal .close").addEventListener("click", function () {
+            document.getElementById("seeMoreModal").classList.remove("show");
+            document.getElementById("seeMoreModal").style.display = "none";
+        });
+    }
+});

@@ -6,298 +6,323 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="border-0">
-                {{!-- <div class="card-header">
-                    <h1 class="fw-bold text-center">{{event.title}}</h1>
-                </div> --}}
-                <div class="card-body">
-                    {{!--<div class="row">
-                        {{!-- <div class="col-md-6">
+
+                <div class="modal" id="seeMoreModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">More Content</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p id="fullContent"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <div class="custom-card" data-id="{{event._id}}" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
                             {{#if event.displayPicture}}
-                            <img src="{{event.displayPicture}}" class="card-img-top" alt="{{event.title}}">
+                            <img class="custom-card-image" src={{event.displayPicture}} alt="{{event.title}}">
                             {{else}}
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
-                                class="card-img-top" alt="Event Picture Not Available">
-                            {{/if}}
-                        </div>
-                        <div class="custom-card">
-                            {{#if event.displayPicture}}
-                            <img class="custom-card-image" src="{{event.displayPicture}}" alt={{event.title}}>
-                            {{else}}
-                            <img class="custom-card-image"
-                                src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
-                                alt="Event Picture Not Available">
+                                class="custom-card-image" alt="Event Picture Not Available">
                             {{/if}}
                             <div class="custom-card-body">
                                 <div class="custom-card-left-block">
                                     <div class="custom-card-title">{{event.title}}</div>
                                     <div class="custom-card-location">
                                         <i class="fa-solid fa-location-dot location-icon" style="color: #f76e40;"></i>
-                                        {{city}}
+                                        {{event.location}}
                                     </div>
                                 </div>
                                 <div class="custom-card-right-block">
-                                    <div class="custom-card-date">{{event.eventDate}}</div>
+                                    <div class="custom-card-date">{{event.eventDay}}</div>
                                     <div class="custom-card-time">{{event.eventTime}}</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Organizer: <a
-                                        href="/user/{{organizer.username}}">{{organizer.firstName}}
-                                        {{organizer.lastName}}</a></li>
-                                <li class="list-group-item">Event Date: {{event.eventDate}}</li>
-                                <li class="list-group-item">Event Time: {{event.eventTime}}</li>
-                                <li class="list-group-item">Location: {{event.location}}</li>
-                                <li class="list-group-item">Category: {{event.category}}</li>
-                                <li class="list-group-item">Duration: {{event.duration}} minutes</li>
-                                <li class="list-group-item">Remaining Seats:
-                                    {{event.remainingSeats}}/{{event.maxCapacity}}</li>
-                                <li class="list-group-item">Ratings:
-                                    {{#if event.averageRating}}
-                                    {{ event.averageRating }}/5
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-right">
+                        <div>
+                            <p class='event-page-title-ex'>{{event.title}}</p>
+                            <div class="content">
+                                <p id="contentPara">{{event.description}}</p>
+                                {{!-- <textarea readonly class="event-page-description-box" cols="50"
+                                    rows="10">{{event.description}}</textarea> --}}
+
+                                <button id="seeMoreBtn" class="btn d-none">See More</button>
+                                {{!-- DONE Show more feature --}}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3"> <!-- Add margin-top for spacing -->
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="custom-card-header-container ">
+                                    <di class=" custom-card-header-container event-info-about-profile">
+                                         {{!-- <div class="row justify-content-center"> --}}
+                                        {{!-- <div class="col-5"> --}}
+                                             {{#if organizer.profilePicture}}
+                                    <img class="custom-card-avatar-container " src="{{organizer.signedProfile}}"
+                                        alt="avatar" />
                                     {{else}}
-                                    No ratings yet
+                                    <img class="custom-card-avatar-container " src="/public/images/user_placeholder.png"
+                                        alt="avatar" />
                                     {{/if}}
-                                </li>
-                                <li class="list-group-item">Created At: {{event.createdAt}}</li>
-                                <li class="list-group-item">Last Updated At: {{event.updatedAt}}</li>
-                                {{#if user}}
-                                {{#if event.isPastEvent}}
-                                <div class="alert alert-danger" role="alert">
-                                    This event has already passed!
+                                        {{!-- </div> --}}
+                                        {{!-- <div class="col-7 justify-content-center event-text-host"> --}}
+                                            <a href="/user/{{organizer.username}}" class=" event-text-owner-info">
+                                    {{organizer.firstName}} {{organizer.lastName}}(Host)</a>
+                                    <small class="event-text-owner-info">{{organizer.email}}</small>
+                                        {{!-- </div> --}}
+                                    {{!-- </div> --}}
+                                   
+                                    {{!-- <h1 class="custom-card-fullname-container">{{organizer.firstName}} {{user.lastName}}</h1> --}}
+                                    </di>
+                                   
+                                    
                                 </div>
-                                {{else if (eq organizer.username user.username)}}
-                                <li class="list-group-item">
-                                    <button class="btn btn-primary edit-event-btn" data-event-id="{{event._id}}">Edit
-                                        Event</button>
-                                </li>
-                                <li class="list-group-item">
-                                    <button class="btn btn-danger delete-event-btn" data-event-id="{{event._id}}"
-                                        data-action="delete-event">Delete this
-                                        Event</button>
-                                </li>
-                                {{else if isAttendee}}
-                                <li class="list-group-item">
-                                    <button class="btn btn-danger rsvp-btn" data-event-id="{{event._id}}"
-                                        data-action="cancel">Cancel RSVP</button>
-                                </li>
-                                {{else if (eq event.remainingSeats 0)}}
-                                <li class="list-group-item">
-                                    <div class="alert alert-danger" role="alert">
-                                        This event is full!
-                                    </div>
-                                </li>
-                                {{else}}
-                                <li class="list-group-item">
-                                    <button class="btn btn-primary rsvp-btn" data-event-id="{{event._id}}"
-                                        data-action="rsvp">RSVP</button>
-                                </li>
-                                {{/if}}
-                                {{else}}
-                                <li class="list-group-item">
-                                    <form method="get" action="/auth/login">
-                                        <button type="submit" class="btn btn-primary">Login to RSVP!</button>
-                                    </form>
-                                </li>
-                                {{/if}}
-                            </ul>
-                        </div>
-                    </div>--}}
-
-                    <div class="row">
-                        {{!-- <img class="custom-card-image" src="{{event.displayPicture}}" alt="{{event.title}}"> --}}
-                        <div class="col-md-6 d-flex justify-content-center">
-                            <div class="custom-card" data-id="{{event._id}}">
-                                {{#if event.displayPicture}}
-                                <img class="custom-card-image" src={{event.displayPicture}} alt="{{event.title}}">
-                                {{else}}
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
-                                    class="custom-card-image" alt="Event Picture Not Available">
-                                {{/if}}
-                                <div class="custom-card-body">
-                                    <div class="custom-card-left-block">
-                                        <div class="custom-card-title">{{event.title}}</div>
-                                        <div class="custom-card-location">
-                                            <i class="fa-solid fa-location-dot location-icon"
-                                                style="color: #f76e40;"></i>
-                                            {{event.location}}
-                                        </div>
-                                    </div>
-                                    <div class="custom-card-right-block">
-                                        <div class="custom-card-date">{{event.eventDay}}</div>
-                                        <div class="custom-card-time">{{event.eventTime}}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 d-flex justify-content-right">
-                            <div>
-                                <p class='event-page-title'>Event Description:</p>
-                                <p>{{event.description}}</p>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
-
-                    <div class="row mt-3"> <!-- Add margin-top for spacing -->
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Organizer: <a href="/user/{{organizer.username}}">
-                                        {{organizer.firstName}} {{organizer.lastName}}</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                {{#if user}}
-                                {{#if event.isPastEvent}}
-                                <div class="alert alert-danger" role="alert">
-                                    This event has already passed!
-                                </div>
-                                {{else if (eq organizer.username user.username)}}
-                                <li class="list-group-item">
-                                    <button class="btn btn-primary edit-event-btn" data-event-id="{{event._id}}">
-                                        Edit Event
-                                    </button>
-                                </li>
-                                <li class="list-group-item">
-                                    <button class="btn btn-danger delete-event-btn" data-event-id="{{event._id}}"
-                                        data-action="delete-event">
-                                        Delete this Event
-                                    </button>
-                                </li>
-                                {{else if isAttendee}}
-                                <li class="list-group-item">
-                                    <button class="btn btn-danger rsvp-btn" data-event-id="{{event._id}}"
-                                        data-action="cancel">
-                                        Cancel RSVP
-                                    </button>
-                                </li>
-                                {{else if (eq event.remainingSeats 0)}}
-                                <li class="list-group-item">
-                                    <div class="alert alert-danger" role="alert">
-                                        This event is full!
-                                    </div>
-                                </li>
-                                {{else}}
-                                <li class="list-group-item">
-                                    <button class="btn btn-primary rsvp-btn" data-event-id="{{event._id}}"
-                                        data-action="rsvp">
-                                        RSVP
-                                    </button>
-                                </li>
-                                {{/if}}
-                                {{else}}
-                                <li class="list-group-item">
-                                    <form method="get" action="/auth/login">
-                                        <button type="submit" class="btn btn-primary">Login to RSVP!</button>
-                                    </form>
-                                </li>
-                                {{/if}}
-                            </ul>
-                        </div>
-                    </div>
-                    {{!-- <div class="row mt-3">
-                        <div class="col-md-6">
-                            {{#if event.photos}}
-                            <div class="row">
-                                {{#each event.photos}}
-                                <div class="col-md-6 mb-3">
-                                    <img src="{{this}}" class="img-thumbnail" alt="Event Photo"
-                                        style="width: 100%; height: 100%;">
-                                </div>
-                                {{/each}}
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush">
+                            {{#if user}}
+                            {{#if event.isPastEvent}}
+                            <div class="alert alert-danger" role="alert">
+                                This event has already passed!
                             </div>
+                            {{else if (eq organizer.username user.username)}}
+                            <li class="list-group-item">
+                                <button class="btn event-btn-default edit-event-btn" data-event-id="{{event._id}}">
+                                    Edit Event
+                                </button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-danger delete-event-btn" data-event-id="{{event._id}}"
+                                    data-action="delete-event">
+                                    Delete this Event
+                                </button>
+                            </li>
+                            {{else if isAttendee}}
+                            <li class="list-group-item">
+                                <button class="btn btn-danger  rsvp-btn" data-event-id="{{event._id}}"
+                                    data-action="cancel">
+                                    Cancel RSVP
+                                </button>
+                            </li>
+                            {{else if (eq event.remainingSeats 0)}}
+                            <li class="list-group-item">
+                                <div class="alert alert-danger" role="alert">
+                                    This event is full!
+                                </div>
+                            </li>
                             {{else}}
-                            <div class="row" style="height: 100%">
-                                <div class="row d-flex justify-content-center align-content-center text-center"
-                                    style="color: grey; height: 100%">No other images available</div>
+                            <li class="list-group-item">
+                                <button class="event-btn-rsvp  btn rsvp-btn" data-event-id="{{event._id}}"
+                                    data-action="rsvp">
+                                    Reserve a Place
+                                </button>
+                            </li>
+                            {{/if}}
+                            {{else}}
+                            <li class="list-group-item">
+                                <form method="get" action="/auth/login">
+                                    <button type="submit" class="btn event-btn-rsvp">Login to RSVP!</button>
+                                </form>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="row">
+                            {{#each event.photos}}
+                            <div class="col-md-6 mb-3">
+                                <img src="{{this}}" class="img-thumbnail" alt="Event Photo"
+                                    style="width: 100%; height: 100%;">
                             </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img style="width: 100%; height: 100%" src="../public/images/location_placeholder.jpg"
+                            alt="Placeholder Image">
+                    </div>
+                </div>
+                <div class="card border-0 mt-3">
+                    <div class="card-header bg-transparent">
+                        <p class="fw-bold event-page-title">Who's Attending:</p>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {{#if event.attendees}}
+                            {{#each event.attendees}}
+                            <li class="list-group-item">
+                                <div class="d-flex align-items-center">
+                                    {{#if this.profilePicture}}
+                                    <img src="{{this.profilePicture}}" class="rounded-circle me-3" width="50"
+                                        height="50" alt="User Avatar">
+                                    {{else}}
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"
+                                        class="rounded-circle me-3" width="50" height="50"
+                                        alt="User Profile Picture Not Available">
+                                    {{/if}}
+                                    <div>
+                                        <p class="mb-0 attendee"><a href="/user/{{this.username}}">{{this.firstName}}
+                                                {{this.lastName}}</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            {{/each}}
+                            {{else}}
+                            <div class="alert alert-info" role="alert">
+                                No one is attending this event right now. Be the first to RSVP!
+                                {{/if}}
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mt-3 border-0 comment-card">
+                    <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                        <p class="fw-bold m-0 event-page-title" id="comment-heading">Comments:</p>
+                        {{#if user}}
+                        <button class="btn btn-primary event-btn-default add-comment-btn" data-action="add-comment">Add
+                            Comment</button>
+                        <div id="add-comment-form" class="card-body" style="display:none;">
+                            <p>Add a Comment</p>
+                            <form id="comment-form">
+                                <div class="mb-3">
+                                    <label for="comment-content" class="form-label">Comment:</label>
+                                    <textarea class="form-control" id="comment-content" name="comment-content"
+                                        rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary comment-submit-btn"
+                                    data-event-id="{{event._id}}">Submit</button>
+                                <button class="btn btn-secondary cancel-comment-btn">Cancel</button>
+                            </form>
                         </div>
                         {{/if}}
-                        <div class="col-md-6">
-                            <img style="width: 100%; height: 300px" src="../public/images/location_placeholder.jpg"
-                                alt="Placeholder Image">
-                        </div>
-                    </div> --}}
-                    <div class="row mt-3">
-                        <div class="col-md-6">
-                            <div class="row">
-                                {{#each event.photos}}
-                                <div class="col-md-6 mb-3">
-                                    <img src="{{this}}" class="img-thumbnail" alt="Event Photo"
-                                        style="width: 100%; height: 100%;">
-                                </div>
-                                {{/each}}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <img style="width: 100%; height: 100%" src="../public/images/location_placeholder.jpg"
-                                alt="Placeholder Image">
-                        </div>
                     </div>
-                    <div class="card border-0 mt-3">
-                        <div class="card-header bg-transparent">
-                            <p class="fw-bold event-page-title">Who's Attending:</p>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group">
-                                {{#if event.attendees}}
-                                {{#each event.attendees}}
-                                <li class="list-group-item">
+                    <div class="mt-4">
+                        {{#if event.comments}}
+                        {{#each event.comments}}
+                        <div class="card mb-3" id="comment-{{this._id}}">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center">
-                                        {{#if this.profilePicture}}
-                                        <img src="{{this.profilePicture}}" class="rounded-circle me-3" width="50"
-                                            height="50" alt="User Avatar">
+                                        {{#if this.commenterProfilePicture}}
+                                        <img src="{{this.commenterProfilePicture}}" class="rounded-circle me-3"
+                                            width="50" height="50" alt="User Avatar">
                                         {{else}}
                                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"
                                             class="rounded-circle me-3" width="50" height="50"
                                             alt="User Profile Picture Not Available">
                                         {{/if}}
                                         <div>
-                                            <p class="mb-0 attendee"><a
-                                                    href="/user/{{this.username}}">{{this.firstName}}
-                                                    {{this.lastName}}</a></p>
+                                            <a href="/user/{{this.commenterUserName}}"
+                                                class="fw-bold">{{this.commenterFirstName}}
+                                                {{this.commenterLastName}}</a>
                                         </div>
                                     </div>
-                                </li>
-                                {{/each}}
-                                {{else}}
-                                <div class="alert alert-info" role="alert">
-                                    No one is attending this event right now. Be the first to RSVP!
-                                    {{/if}}
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card mt-3 border-0 comment-card">
-                        <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                            <p class="fw-bold m-0 event-page-title" id="comment-heading">Comments:</p>
-                            {{#if user}}
-                            <button class="btn btn-primary add-comment-btn" data-action="add-comment">Add
-                                Comment</button>
-                            <div id="add-comment-form" class="card-body" style="display:none;">
-                                <p>Add a Comment</p>
-                                <form id="comment-form">
-                                    <div class="mb-3">
-                                        <label for="comment-content" class="form-label">Comment:</label>
-                                        <textarea class="form-control" id="comment-content" name="comment-content"
-                                            rows="3"></textarea>
+                                    <div class="text-end">
+                                        <div class="text-muted mb-0">
+                                            <p>Commented At: {{moment this.createdAt "MMMM Do YYYY, h:mm:ss a"}}
+                                            </p>
+                                            <p>Last Updated At: {{moment this.updatedAt "MMMM Do YYYY, h:mm:ss
+                                                a"}}</p>
+                                        </div>
+                                        {{#if (eq this.commenterUserName ../user.username)}}
+                                        <button class="btn btn-primary" id="edit-comment-btn" data-action="edit-comment"
+                                            data-comment-id="{{this._id}}" data-comment-index="{{@index}}">Edit
+                                            Comment</button>
+                                        {{/if}}
                                     </div>
-                                    <button type="submit" class="btn btn-primary comment-submit-btn"
-                                        data-event-id="{{event._id}}">Submit</button>
-                                    <button class="btn btn-secondary cancel-comment-btn">Cancel</button>
-                                </form>
+                                </div>
+                                <hr>
+                                <p class="card-text" id="comment-display">{{this.commentText}}</p>
+                                <div id="edit-comment-form">
+                                    <div class="mb-3">
+                                        <label for="edit-comment-textarea" class="form-label">Comment:</label>
+                                        <textarea class="form-control" id="edit-comment-textarea"
+                                            rows="3">{{this.commentText}}</textarea>
+                                    </div>
+                                    {{#if (eq this.commenterUserName ../user.username)}}
+                                    <div class="d-flex justify-content-between edit-form-buttons">
+                                        <button class="btn btn-primary" id="save-comment-btn"
+                                            data-comment-id="{{this._id}}">Save</button>
+                                        <button class="btn btn-secondary" id="cancel-edit-comment-btn"
+                                            data-comment-id="{{this._id}}">Cancel</button>
+                                        <button class="btn btn-danger" id="delete-comment-btn"
+                                            data-comment-id="{{this._id}}">Delete this
+                                            comment</button>
+                                    </div>
+                                    {{/if}}
+                                </div>
                             </div>
-                            {{/if}}
                         </div>
+                        {{/each}}
+                        {{else}}
+                        <div class="alert alert-info" role="alert">
+                            No comments yet. Be the first one to comment!
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="card border-0 mt-3 review-card">
+                    <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+                        <p class="fw-bold m-0 event-page-title" id="review-heading">Reviews:</p>
+                        {{#if event.isPastEvent}}
+                        {{#if isAttendee}}
+                        <button class="btn btn-primary .event-btn-default add-review-btn" data-action="add-review">Add
+                            Review</button>
+                        <div id="add-review-form" class="card-body" style="display:none;">
+                            <p>Add a Review</p>
+                            <form id="review-form">
+                                <div class="mb-3">
+                                    <label for="review-rating" class="form-label">Rating:</label>
+                                    <select class="form-select" id="review-rating" name="review-rating">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="review-content" class="form-label">Review:</label>
+                                    <textarea class="form-control" id="review-content" name="review-content"
+                                        rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary review-submit-btn"
+                                    data-event-id="{{event._id}}">Submit</button>
+                                <button class="btn btn-secondary cancel-review-btn">Cancel</button>
+                            </form>
+                        </div>
+                        {{/if}}
+                        {{/if}}
+                    </div>
+                    <div class="card-body">
                         <div class="mt-4">
-                            {{#if event.comments}}
-                            {{#each event.comments}}
-                            <div class="card mb-3" id="comment-{{this._id}}">
+                            {{#if event.reviews}}
+                            {{#each event.reviews}}
+                            <div class="card mb-3" id="review-{{this._id}}">
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex align-items-center">
-                                            {{#if this.commenterProfilePicture}}
-                                            <img src="{{this.commenterProfilePicture}}" class="rounded-circle me-3"
+                                            {{#if this.reviewerProfilePicture}}
+                                            <img src="{{this.reviewerProfilePicture}}" class="rounded-circle me-3"
                                                 width="50" height="50" alt="User Avatar">
                                             {{else}}
                                             <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"
@@ -305,42 +330,56 @@
                                                 alt="User Profile Picture Not Available">
                                             {{/if}}
                                             <div>
-                                                <a href="/user/{{this.commenterUserName}}"
-                                                    class="fw-bold">{{this.commenterFirstName}}
-                                                    {{this.commenterLastName}}</a>
+                                                <a href="/user/{{this.reviewerUserName}}"
+                                                    class="fw-bold">{{this.reviewerFirstName}}
+                                                    {{this.reviewerLastName}}</a>
                                             </div>
                                         </div>
                                         <div class="text-end">
                                             <div class="text-muted mb-0">
-                                                <p>Commented At: {{moment this.createdAt "MMMM Do YYYY, h:mm:ss a"}}
-                                                </p>
-                                                <p>Last Updated At: {{moment this.updatedAt "MMMM Do YYYY, h:mm:ss
+                                                <p>Reviewed At: {{moment this.createdAt "MMMM Do YYYY, h:mm:ss
                                                     a"}}</p>
+                                                <p>Last Updated At: {{moment this.updatedAt "MMMM Do YYYY,
+                                                    h:mm:ss a"}}</p>
                                             </div>
-                                            {{#if (eq this.commenterUserName ../user.username)}}
-                                            <button class="btn btn-primary" id="edit-comment-btn"
-                                                data-action="edit-comment" data-comment-id="{{this._id}}"
-                                                data-comment-index="{{@index}}">Edit Comment</button>
+                                            {{#if (eq this.reviewerUserName ../user.username)}}
+                                            <button class="btn btn-primary edit-review-btn" data-action="edit-review"
+                                                data-review-id="{{this._id}}" data-review-index="{{@index}}">Edit
+                                                Review</button>
                                             {{/if}}
                                         </div>
                                     </div>
                                     <hr>
-                                    <p class="card-text" id="comment-display">{{this.commentText}}</p>
-                                    <div id="edit-comment-form">
+                                    <p id="rating-display"> Rating:
+                                        {{#repeat this.rating}}
+                                        <i class="fas fa-star star active"></i>
+                                        {{/repeat}}
+                                    </p>
+                                    <p id="review-display">Review: {{this.reviewText}}</p>
+                                    <div id="edit-review-form">
                                         <div class="mb-3">
-                                            <label for="edit-comment-textarea" class="form-label">Comment:</label>
-                                            <textarea class="form-control" id="edit-comment-textarea"
-                                                rows="3">{{this.commentText}}</textarea>
+                                            <label for="edit-rating-input" class="form-label">Rating:</label>
+                                            <div id="rating-input" data-rating="{{this.rating}}">
+                                                {{#repeat 5}}
+                                                <i
+                                                    class="fas fa-star star{{#if (gte @index ../rating)}} active{{/if}}"></i>
+                                                {{/repeat}}
+                                            </div>
                                         </div>
-                                        {{#if (eq this.commenterUserName ../user.username)}}
+                                        <div class="mb-3">
+                                            <label for="edit-review-textarea" class="form-label">Review:</label>
+                                            <textarea class="form-control" id="edit-review-textarea"
+                                                rows="3">{{this.reviewText}}</textarea>
+                                        </div>
+                                        {{#if (eq this.reviewerUserName ../user.username)}}
                                         <div class="d-flex justify-content-between edit-form-buttons">
-                                            <button class="btn btn-primary" id="save-comment-btn"
-                                                data-comment-id="{{this._id}}">Save</button>
-                                            <button class="btn btn-secondary" id="cancel-edit-comment-btn"
-                                                data-comment-id="{{this._id}}">Cancel</button>
-                                            <button class="btn btn-danger" id="delete-comment-btn"
-                                                data-comment-id="{{this._id}}">Delete this
-                                                comment</button>
+                                            <button class="btn btn-primary" id="save-review-btn"
+                                                data-review-id="{{this._id}}">Save</button>
+                                            <button class="btn btn-secondary" id="cancel-edit-review-btn"
+                                                data-review-id="{{this._id}}">Cancel</button>
+                                            <button class="btn btn-danger" id="delete-review-btn"
+                                                data-review-id="{{this._id}}">Delete this
+                                                review</button>
                                         </div>
                                         {{/if}}
                                     </div>
@@ -349,127 +388,14 @@
                             {{/each}}
                             {{else}}
                             <div class="alert alert-info" role="alert">
-                                No comments yet. Be the first one to comment!
+                                No reviews yet. Be the first one to review!
                             </div>
                             {{/if}}
-                        </div>
-                    </div>
-                    <div class="card border-0 mt-3 review-card">
-                        <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
-                            <p class="fw-bold m-0 event-page-title" id="review-heading">Reviews:</p>
-                            {{#if event.isPastEvent}}
-                            {{#if isAttendee}}
-                            <button class="btn btn-primary add-review-btn" data-action="add-review">Add
-                                Review</button>
-                            <div id="add-review-form" class="card-body" style="display:none;">
-                                <p>Add a Review</p>
-                                <form id="review-form">
-                                    <div class="mb-3">
-                                        <label for="review-rating" class="form-label">Rating:</label>
-                                        <select class="form-select" id="review-rating" name="review-rating">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="review-content" class="form-label">Review:</label>
-                                        <textarea class="form-control" id="review-content" name="review-content"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary review-submit-btn"
-                                        data-event-id="{{event._id}}">Submit</button>
-                                    <button class="btn btn-secondary cancel-review-btn">Cancel</button>
-                                </form>
-                            </div>
-                            {{/if}}
-                            {{/if}}
-                        </div>
-                        <div class="card-body">
-                            <div class="mt-4">
-                                {{#if event.reviews}}
-                                {{#each event.reviews}}
-                                <div class="card mb-3" id="review-{{this._id}}">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center">
-                                                {{#if this.reviewerProfilePicture}}
-                                                <img src="{{this.reviewerProfilePicture}}" class="rounded-circle me-3"
-                                                    width="50" height="50" alt="User Avatar">
-                                                {{else}}
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"
-                                                    class="rounded-circle me-3" width="50" height="50"
-                                                    alt="User Profile Picture Not Available">
-                                                {{/if}}
-                                                <div>
-                                                    <a href="/user/{{this.reviewerUserName}}"
-                                                        class="fw-bold">{{this.reviewerFirstName}}
-                                                        {{this.reviewerLastName}}</a>
-                                                </div>
-                                            </div>
-                                            <div class="text-end">
-                                                <div class="text-muted mb-0">
-                                                    <p>Reviewed At: {{moment this.createdAt "MMMM Do YYYY, h:mm:ss
-                                                        a"}}</p>
-                                                    <p>Last Updated At: {{moment this.updatedAt "MMMM Do YYYY,
-                                                        h:mm:ss a"}}</p>
-                                                </div>
-                                                {{#if (eq this.reviewerUserName ../user.username)}}
-                                                <button class="btn btn-primary edit-review-btn"
-                                                    data-action="edit-review" data-review-id="{{this._id}}"
-                                                    data-review-index="{{@index}}">Edit Review</button>
-                                                {{/if}}
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <p id="rating-display"> Rating:
-                                            {{#repeat this.rating}}
-                                            <i class="fas fa-star star active"></i>
-                                            {{/repeat}}
-                                        </p>
-                                        <p id="review-display">Review: {{this.reviewText}}</p>
-                                        <div id="edit-review-form">
-                                            <div class="mb-3">
-                                                <label for="edit-rating-input" class="form-label">Rating:</label>
-                                                <div id="rating-input" data-rating="{{this.rating}}">
-                                                    {{#repeat 5}}
-                                                    <i
-                                                        class="fas fa-star star{{#if (gte @index ../rating)}} active{{/if}}"></i>
-                                                    {{/repeat}}
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="edit-review-textarea" class="form-label">Review:</label>
-                                                <textarea class="form-control" id="edit-review-textarea"
-                                                    rows="3">{{this.reviewText}}</textarea>
-                                            </div>
-                                            {{#if (eq this.reviewerUserName ../user.username)}}
-                                            <div class="d-flex justify-content-between edit-form-buttons">
-                                                <button class="btn btn-primary" id="save-review-btn"
-                                                    data-review-id="{{this._id}}">Save</button>
-                                                <button class="btn btn-secondary" id="cancel-edit-review-btn"
-                                                    data-review-id="{{this._id}}">Cancel</button>
-                                                <button class="btn btn-danger" id="delete-review-btn"
-                                                    data-review-id="{{this._id}}">Delete this
-                                                    review</button>
-                                            </div>
-                                            {{/if}}
-                                        </div>
-                                    </div>
-                                </div>
-                                {{/each}}
-                                {{else}}
-                                <div class="alert alert-info" role="alert">
-                                    No reviews yet. Be the first one to review!
-                                </div>
-                                {{/if}}
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

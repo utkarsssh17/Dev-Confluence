@@ -78,3 +78,63 @@
 }
 
 /* This above style is for the event card on homepage */
+/* css for event.handlebars */
+.event-page-title-ex{
+    font-size: 50px;
+    font-weight: 800;
+}
+.event-page-description-box{
+    min-width: 300px;
+    min-height: 100px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding:10px;
+    border: none;
+}
+/* #seeMoreBtn{
+
+} */
+.event-text-host{
+    display: flex;
+    /* align-content: center; */
+    flex-direction: column;
+}
+.event-info-about-profile{
+    background-color: #6c6c6c;
+    border-radius: 15px;
+    max-width: 200px;
+    border: none;
+
+}
+
+.event-text-owner-info{
+  
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+.event-text-owner-info:hover{
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(218, 216, 216);
+}
+.event-btn-rsvp{
+    color:#FFFF!important;
+    background-color: #151D20!important;
+    font-size: medium!important;
+    border-radius: 50px!important;
+    font-family: 'Montserrat', sans-serif!important;
+    padding:10px !important;
+    padding-left: 30px!important;
+    padding-right: 30px!important;
+    /* border-radius: 50px; */
+}
+
+.event-btn-default{
+    color:#FFFF!important;
+    background-color: #151D20!important;
+    font-size: medium!important;
+    border-radius: 50px!important;
+    font-family: 'Montserrat', sans-serif!important;
+    padding:10px !important;
+    padding-left: 30px!important;
+    padding-right: 30px!important;
+    /* border-radius: 50px; */
+}
