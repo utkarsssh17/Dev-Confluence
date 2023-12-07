@@ -9,7 +9,7 @@
   <div class="row">
     {{#each events}}
     <div class="col-md-4 mb-4">
-      <div class="custom-card">
+      <div class="custom-card" data-id="{{this._id}}">
         {{#if this.displayPicture}}
         <img class="custom-card-image" src={{this.displayPicture}} alt={{this.title}}>
         {{else}}
