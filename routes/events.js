@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { ensureAuthenticated } from '../controllers/helpers.js';
 import * as eventController from '../controllers/events.js';
 import * as commentsController from '../controllers/comments.js';
+import * as reviewController from '../controllers/reviews.js';
 
 const router = Router();
 
@@ -32,5 +33,14 @@ router.put('/:id/comment/:commentId', ensureAuthenticated, commentsController.ed
 
 // Delete comment
 router.delete('/:id/comment/:commentId', ensureAuthenticated, commentsController.deleteComment);
+
+// Add review 
+router.post('/:id/review', ensureAuthenticated, reviewController.addReview);
+
+// Edit review 
+router.put('/:id/review/:reviewId', ensureAuthenticated, reviewController.editReview);
+
+// Delete review 
+router.delete('/:id/review/:reviewId', ensureAuthenticated, reviewController.deleteReview);
 
 export default router;
