@@ -3,8 +3,9 @@ import multer from "multer";
 //Multer config
 const storage = multer.memoryStorage();
 const limits = {
-    fileSize: 3 * 1024 * 1024,
+    fileSize: 20 * 1024 * 1024,
 };
+// adding changes to the filesize due to limits of new AI images
 const fileFilter = function (req, file, cb) {
     const allowedMimes = ['image/jpeg', 'image/png'];
     if (allowedMimes.includes(file.mimetype)) {
