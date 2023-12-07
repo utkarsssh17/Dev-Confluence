@@ -88,6 +88,24 @@ const getEventById = async (req, res, next) => {
             }
         }
 
+        // Get reviews details
+        if (event.reviews && event.reviews.length > 0) {
+            for (let i = 0; i < event.reviews.length; i++) {
+                const review = event.reviews[i];
+                const reviewer = await User.findById(review.userId).lean();
+                if (req.user) {
+                    if (reviewer._id.toString() === req.user.id.toString()) {
+                    }
+                }
+                if (reviewer.profilePicture) {
+                    review.reviewerProfilePicture = await imageController.getSignedUrl(reviewer.profilePicture);
+                }
+                review.reviewerUserName = reviewer.username;
+                review.reviewerFirstName = reviewer.firstName;
+                review.reviewerLastName = reviewer.lastName;
+            }
+        }
+
         event.isPastEvent = false;
         if (new Date(event.eventDate) < new Date()) {
             event.isPastEvent = true;
