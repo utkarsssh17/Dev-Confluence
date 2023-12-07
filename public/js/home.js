@@ -17,4 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.removeItem('messageContainer');
         localStorage.removeItem('alertMessage');
     });
+
+    document.querySelectorAll('.custom-card').forEach(card => {
+        card.addEventListener('click', function () {
+            var eventId = this.getAttribute('data-id');
+            console.log(eventId);
+            window.location.href = '/events/' + eventId;
+        });
+    });
 });
+
+

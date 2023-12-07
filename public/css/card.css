@@ -1,18 +1,18 @@
-
 /* This custom card is for the event page */
 
 .custom-card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 400px;
     height: 200px;
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25%, rgb(10 5 5) 100%)
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 25%, rgb(10 5 5) 100%);
+    cursor: pointer;
 }
 
 .custom-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .custom-container {
