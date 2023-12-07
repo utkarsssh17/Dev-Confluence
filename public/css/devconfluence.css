@@ -153,3 +153,7 @@ button[type="submit"] {
   min-width: 80px;
   text-align: center;
 }
+
+.card-no-border {
+  border: none;
+}
