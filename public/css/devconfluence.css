@@ -157,3 +157,24 @@ button[type="submit"] {
 .card-no-border {
   border: none;
 }
+.event-comment-center{
+  display: flex;
+  justify-content: space-between;
+}
+.event-who-attend{
+  color: #ffff;
+  background-color: #639681;
+  padding:30px;
+  border-radius: 30px;
+}
+.category-tag{
+  background-color: rgb(79 80 81);
+  color: white;
+  padding:5px 20px 5px 20px;
+  border-radius: 30px;
+  margin:0px 5px 0px 5px;
+}
+.event-tag-holder{
+  display: flex;
+  margin: 10px 0px 10px 0px;
+}

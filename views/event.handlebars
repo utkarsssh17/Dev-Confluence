@@ -47,6 +47,7 @@
                                 </div>
                             </div>
                         </div>
+                       
                     </div>
                     <div class="col-md-6 d-flex justify-content-right">
                         <div>
@@ -63,7 +64,18 @@
                         </div>
                     </div>
                 </div>
-
+                {{#if event.categoriesList}}
+                <div class="row">
+                    <div class="col">
+                        
+                         <div class="event-tag-holder">
+                            {{#each event.categoriesList}}
+                            <span class="category-tag">{{this}}</span>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
                 <div class="row mt-3"> <!-- Add margin-top for spacing -->
                     <div class="col-md-6">
                         <ul class="list-group list-group-flush">
@@ -164,9 +176,10 @@
                 </div>
                 <div class="card border-0 mt-3">
                     <div class="card-header bg-transparent">
-                        <p class="fw-bold event-page-title">Who's Attending:</p>
+                        <p class="fw-bold event-page-title event-who-attend" data-bs-toggle="collapse" href="#collapse-attend" role="button" aria-expanded="false" aria-controls="collapse-attend">Click to see : Who's Attending:</p>
                     </div>
-                    <div class="card-body">
+                    <div  class="collapse" id="collapse-attend" >
+                        <div class="card-body">
                         <ul class="list-group">
                             {{#if event.attendees}}
                             {{#each event.attendees}}
@@ -193,6 +206,8 @@
                                 {{/if}}
                         </ul>
                     </div>
+                    </div>
+                    
                 </div>
                 <div class="card mt-3 border-0 comment-card">
                     <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
@@ -208,9 +223,12 @@
                                     <textarea class="form-control" id="comment-content" name="comment-content"
                                         rows="3"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary comment-submit-btn"
-                                    data-event-id="{{event._id}}">Submit</button>
+                                <div class="event-comment-center" >
                                 <button class="btn btn-secondary cancel-comment-btn">Cancel</button>
+                                    <button type="submit" class="btn btn-primary comment-submit-btn"
+                                    data-event-id="{{event._id}}">Submit</button>
+                                </div>
+                                
                             </form>
                         </div>
                         {{/if}}
@@ -285,7 +303,7 @@
                         <p class="fw-bold m-0 event-page-title" id="review-heading">Reviews:</p>
                         {{#if event.isPastEvent}}
                         {{#if isAttendee}}
-                        <button class="btn btn-primary .event-btn-default add-review-btn" data-action="add-review">Add
+                        <button class="btn btn-primary event-btn-default add-review-btn" data-action="add-review">Add
                             Review</button>
                         <div id="add-review-form" class="card-body" style="display:none;">
                             <p>Add a Review</p>
@@ -305,9 +323,9 @@
                                     <textarea class="form-control" id="review-content" name="review-content"
                                         rows="3"></textarea>
                                 </div>
+                                <button class="btn btn-secondary cancel-review-btn">Cancel</button>
                                 <button type="submit" class="btn btn-primary review-submit-btn"
                                     data-event-id="{{event._id}}">Submit</button>
-                                <button class="btn btn-secondary cancel-review-btn">Cancel</button>
                             </form>
                         </div>
                         {{/if}}

@@ -63,6 +63,14 @@ const getEventById = async (req, res, next) => {
         const signedEventImageUrlProf = await imageController.getSignedUrl(organizer.profilePicture);
         organizer["signedProfile"]=signedEventImageUrlProf;
         
+
+        //add categories to comma seperated
+        if (event.category[0]!=0){
+            event["categoriesList"]=event.category[0].split(",");
+
+        }
+        
+        console.log(event.categoriesList)
         // Get attendees details
         let isAttendee = false;
         if (event.attendees && event.attendees.length > 0) {
