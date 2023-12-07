@@ -5,7 +5,7 @@
 <div class="container mt-2">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card border-0">
+            <div class="border-0">
                 {{!-- <div class="card-header">
                     <h1 class="fw-bold text-center">{{event.title}}</h1>
                 </div> --}}
@@ -108,13 +108,12 @@
                     <div class="row">
                         {{!-- <img class="custom-card-image" src="{{event.displayPicture}}" alt="{{event.title}}"> --}}
                         <div class="col-md-6 d-flex justify-content-center">
-                            <div class="custom-card">
+                            <div class="custom-card" data-id="{{event._id}}">
                                 {{#if event.displayPicture}}
-                                <img class="custom-card-image" src="{{event.displayPicture}}" alt="{{event.title}}">
+                                <img class="custom-card-image" src={{event.displayPicture}} alt="{{event.title}}">
                                 {{else}}
-                                <img class="custom-card-image"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
-                                    alt="Event Picture Not Available">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
+                                    class="custom-card-image" alt="Event Picture Not Available">
                                 {{/if}}
                                 <div class="custom-card-body">
                                     <div class="custom-card-left-block">
@@ -122,11 +121,11 @@
                                         <div class="custom-card-location">
                                             <i class="fa-solid fa-location-dot location-icon"
                                                 style="color: #f76e40;"></i>
-                                            {{city}}
+                                            {{event.location}}
                                         </div>
                                     </div>
                                     <div class="custom-card-right-block">
-                                        <div class="custom-card-date">{{event.eventDate}}</div>
+                                        <div class="custom-card-date">{{event.eventDay}}</div>
                                         <div class="custom-card-time">{{event.eventTime}}</div>
                                     </div>
                                 </div>
@@ -200,17 +199,18 @@
                     {{!-- <div class="row mt-3">
                         <div class="col-md-6">
                             {{#if event.photos}}
-                                <div class="row">
-                                    {{#each event.photos}}
-                                    <div class="col-md-6 mb-3">
-                                        <img src="{{this}}" class="img-thumbnail" alt="Event Photo"
-                                            style="width: 100%; height: 100%;">
-                                    </div>
-                                    {{/each}}
+                            <div class="row">
+                                {{#each event.photos}}
+                                <div class="col-md-6 mb-3">
+                                    <img src="{{this}}" class="img-thumbnail" alt="Event Photo"
+                                        style="width: 100%; height: 100%;">
                                 </div>
+                                {{/each}}
+                            </div>
                             {{else}}
                             <div class="row" style="height: 100%">
-                                <div class="row d-flex justify-content-center align-content-center text-center" style="color: grey; height: 100%">No other images available</div>
+                                <div class="row d-flex justify-content-center align-content-center text-center"
+                                    style="color: grey; height: 100%">No other images available</div>
                             </div>
                         </div>
                         {{/if}}
@@ -224,13 +224,15 @@
                             <div class="row">
                                 {{#each event.photos}}
                                 <div class="col-md-6 mb-3">
-                                    <img src="{{this}}" class="img-thumbnail" alt="Event Photo" style="width: 100%; height: 100%;">
+                                    <img src="{{this}}" class="img-thumbnail" alt="Event Photo"
+                                        style="width: 100%; height: 100%;">
                                 </div>
                                 {{/each}}
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img style="width: 100%; height: 100%" src="../public/images/location_placeholder.jpg" alt="Placeholder Image">
+                            <img style="width: 100%; height: 100%" src="../public/images/location_placeholder.jpg"
+                                alt="Placeholder Image">
                         </div>
                     </div>
                     <div class="card border-0 mt-3">

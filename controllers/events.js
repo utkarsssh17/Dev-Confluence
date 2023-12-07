@@ -49,6 +49,8 @@ const getEventById = async (req, res, next) => {
         const signedDisplayPictureUrl = await imageController.getSignedUrl(event.displayPicture);
         event.displayPicture = signedDisplayPictureUrl;
         event.eventDate = helperFn.formatDate(event.eventDate);
+        event.eventDay = helperFn.formatHomeEventDate(event.eventDate);
+        event.eventTime = helperFn.formatTime(event.eventTime);
         event.createdAt = helperFn.formatDate(event.createdAt);
         event.updatedAt = helperFn.formatDate(event.updatedAt);
 

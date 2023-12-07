@@ -17,7 +17,7 @@ const constructorMethod = (app) => {
             for (let i = 0; i < events.length; i++) {
                 events[i].eventTime = helperFn.formatTime(events[i].eventTime);
             }
-            res.render("home", { title: "Dev Confluence",events, user: req.user });
+            res.render("home", { title: "Dev Confluence", events, user: req.user });
         } catch (error) {
             next(error);
         }
