@@ -74,6 +74,19 @@ const getEventById = async (req, res, next) => {
             }
         }
 
+        // Get comments details
+        if (event.comments && event.comments.length > 0) {
+            for (let i = 0; i < event.comments.length; i++) {
+                const comment = event.comments[i];
+                const commenter = await User.findById(comment.userId).lean();
+                if (commenter.profilePicture) {
+                    comment.commenterProfilePicture = await imageController.getSignedUrl(commenter.profilePicture);
+                }
+                comment.commenterUserName = commenter.username;
+                comment.commenterFirstName = commenter.firstName;
+                comment.commenterLastName = commenter.lastName;
+            }
+        }
 
         event.isPastEvent = false;
         if (new Date(event.eventDate) < new Date()) {

@@ -184,4 +184,20 @@ const sanitizeRequest = () => {
     }
 }
 
-export { generateUsername, randomizeFileName, isValidName, isValidUsername, usernameExists, isValidEmail, emailExists, isValidPassword, passwordsMatch, isValidDOB, isValidBio, trimRequestFields, ensureAuthenticated, formatDate, sanitizeRequest, formatHomeEventDate, formatTime };
+const validateComment = (comment) => {
+    if (!comment) {
+        throw new Error("Comment cannot be empty.");
+    }
+    if (typeof comment !== 'string') {
+        throw new Error("Comment must be a string.");
+    }
+    if (comment.length < 5) {
+        throw new Error("Comment must be at least 5 characters long.");
+    }
+    if (comment.length > 500) {
+        throw new Error("Comment cannot be more than 500 characters long.");
+    }
+    return true;
+}
+
+export { generateUsername, randomizeFileName, isValidName, isValidUsername, usernameExists, isValidEmail, emailExists, isValidPassword, passwordsMatch, isValidDOB, isValidBio, trimRequestFields, ensureAuthenticated, formatDate, sanitizeRequest, formatHomeEventDate, formatTime, validateComment };

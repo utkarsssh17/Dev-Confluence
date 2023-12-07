@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { ensureAuthenticated } from '../controllers/helpers.js';
 import * as eventController from '../controllers/events.js';
+import * as commentsController from '../controllers/comments.js';
 
 const router = Router();
 
@@ -22,5 +23,14 @@ router.delete('/:id', ensureAuthenticated, eventController.deleteEvent);
 router.get('/:id/edit', ensureAuthenticated,eventController.renderEditEvent);
 
 router.put('/:id/edit', ensureAuthenticated, eventController.editEvent);
+
+// Add comment
+router.post('/:id/comment', ensureAuthenticated, commentsController.addComment);
+
+// Edit comment
+router.put('/:id/comment/:commentId', ensureAuthenticated, commentsController.editComment);
+
+// Delete comment
+router.delete('/:id/comment/:commentId', ensureAuthenticated, commentsController.deleteComment);
 
 export default router;
