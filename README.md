@@ -26,6 +26,9 @@ npm install
 Which we have shared in the submission files just check for .env
 <br>
 Also, we will add .env  in the Presentation please find in the starting of the ppt.
+<br>
+We have setup this in .zip so you can run <code>npm install</code>  and run <code>npm start</code> 
+<br>
 
 ### Run the following command
 
