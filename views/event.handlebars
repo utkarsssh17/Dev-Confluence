@@ -2,7 +2,7 @@
 <script src="../public/js/rsvp.js"></script>
 <script src="../public/js/comments.js"></script>
 <script src="../public/js/reviews.js"></script>
-<div class="container mt-2">
+<div class="container mt-2" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="border-0">
@@ -26,7 +26,7 @@
                 <div class="row">
 
                     <div class="col-md-6 d-flex justify-content-center">
-                        <div class="custom-card" data-id="{{event._id}}" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+                        <div class="custom-card" data-id="{{event._id}}" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;margin-top:20px;">
                             {{#if event.displayPicture}}
                             <img class="custom-card-image" src={{event.displayPicture}} alt="{{event.title}}">
                             {{else}}
